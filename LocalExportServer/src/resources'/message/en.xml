@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="1000">SUCCESS</entry> <!-- MSG_COMMON_SUCCESS -->
+	<entry key="1001">FAIL</entry> <!-- MSG_COMMON_FAILED -->
+
+	<entry key="2001">Success in connect to DBMS.</entry> <!-- MSG_DATABASE_CONNECT_SUCCESS -->
+
+	<entry key="9000">System exception occurred. Please contact your administrator.</entry> <!-- MSG_SYSTEM_EXCEPTION -->
+	<entry key="9001">DB exception occurred during work. Please contact your administrator.</entry> <!-- MSG_DATABASE_EXCEPTION -->
+	<entry key="9002">ID or Passwords do not match.</entry> <!-- MSG_LOGIN_PASSWD_FAIL -->
+	<entry key="9003">ID or Passwords do not match.</entry> <!-- MSG_LOGIN_USERID_FAIL -->
+	<entry key="9004">The requested method does not exist.</entry> <!-- MSG_SYSTEM_METHOD_NOTFOUND -->
+	<entry key="9005">Failed to execute the requested method.</entry> <!-- MSG_SYSTEM_METHOD_INVOKE_FAIL -->
+	<entry key="9006">Failed to obtain DB connection object.</entry> <!-- MSG_DATABASE_CONNECTION_NULL -->
+	<entry key="9007">Method is not implemented.</entry> <!-- MSG_SYSTEM_METHOD_UNIMPLEMENTED -->
+	<entry key="9008">Publishing to the viewer in the editor failed to get a list of installed servers.</entry> <!-- MSG_FAIL_TO_FIND_PUBLISH_SERVER_LIST -->
+	<entry key="9009">The requested URL value is empty.</entry> <!-- MSG_REQUET_URL_IS_EMPTY -->
+	<entry key="9010">Failed to obtain XML data.</entry> <!-- MSG_FAILED_TO_GET_XMLDATA -->
+	<entry key="9011">Form information file does not exist.</entry> <!-- MSG_NOT_EXISTS_FORM_INFO_FILE -->
+	<entry key="9012">Given path does not exist.</entry> <!-- MSG_NOT_EXISTS_PATH -->
+	<entry key="9013">Template file does not exist in a given.</entry> <!-- MSG_NOT_EXISTS_TEMPLATE_FILE -->
+	<entry key="9014">The document viewer open the log file does not exist.</entry> <!-- MSG_NOT_EXISTS_VIEWLOG_FILE -->
+	<entry key="9015">IP address of the license server is not valid.</entry> <!-- MSG_LICENSE_SERVER_IP_INVALID -->
+	<entry key="9016">=Login failed.</entry> <!-- MSG_LOGIN_FAILED -->
+	<entry key="9017">Please check DB connections.</entry> <!-- MSG_CHECK_YOUR_DB_CONNECTION -->
+	<entry key="9018">Failed to create a folder. Please contact your administrator.</entry> <!-- MSG_FAILED_TO_MAKE_FOLDER -->
+	<entry key="9019">You can not create duplicate files. Please contact your administrator.</entry> <!-- MSG_ALREADY_FILE_EXISTS -->
+	<entry key="9020">It is the wrong approach.</entry> <!-- MSG_WRONG_APPROACH -->
+	<entry key="9021">File upload failed. Please contact your administrator.</entry> <!-- MSG_FAILED_TO_UPLOAD -->
+	<entry key="9022">Dataset file requested does not exist.</entry> <!-- MSG_NOT_EXISTS_DATASET_FILE -->
+	<entry key="9023">ERD file requested does not exist.</entry> <!-- MSG_NOT_EXISTS_ERD_FILE -->
+	<entry key="9024">SQL file requested does not exist.</entry> <!-- MSG_NOT_EXISTS_SQL_FILE -->
+	<entry key="9025">TNS Information file requested does not exist.</entry> <!-- MSG_NOT_EXISTS_TNS_FILE -->
+	<entry key="9026">Failed to delete the given file.</entry> <!-- MSG_FAILED_TO_DELETE_FILE -->
+	<entry key="9027">Is not a SELECT query. Only valid for the SELECT query.</entry> <!-- MSG_IS_NOT_SELECT_QUERY -->
+	<entry key="9028">Given DBMS type is not defined.</entry> <!-- MSG_UNDEFINED_DBMS_TYPE -->
+	<entry key="9029">Data can not be found.</entry> <!-- MSG_DATABASE_NO_DATA_FOUND -->
+	<entry key="9030">Given command is not defined.</entry> <!-- MSG_DATABASE_UNDEFINED_COMMAND -->
+	<entry key="9031">Given syntax is not supported.</entry> <!-- MSG_DATABASE_UNSUPPORTED_SYNTAX -->
+	<entry key="9032">The class not found.</entry> <!-- MSG_CLASS_NOT_FOUND_EXCEPTION -->
+	<entry key="9033">Failed to get a list of form history.</entry> <!-- MSG_FAIL_TO_FIND_PROJECT_HISTORY_LIST -->
+	<entry key="9034">Failed to excute service.</entry> <!-- MSG_EXCUTION_SERVICE_FAILED -->
+	<entry key="9035">The following parameter is not defined.</entry> <!-- MSG_PARAMETER_NOT_DEFINED -->
+	<entry key="9036">The following method not found.</entry> <!-- MSG_METHOD_NOT_FOUND -->
+	<entry key="9037">The following controller not found.</entry> <!-- MSG_CONTROLLER_NOT_FOUND -->
+	<entry key="9038">device file requested does not exist.</entry> <!-- MSG_NOT_EXISTS_DEVICE_FILE -->
+	<entry key="9039">License file requested does not exist.</entry> <!-- MSG_NOT_EXISTS_LICENSE_FILE -->
+	<entry key="9040">Document generation exception occurred. Please contact your administrator.</entry> <!-- MSG_DOC_GEN_EXCEPTION -->
+	<entry key="9041">Incorrect password.</entry> <!-- MSG_WRONG_PASSWORD -->
+	<entry key="9042">The parameter does not exist.</entry> <!-- MSG_PARAMETERS_NOT_EXIT -->
+	<entry key="9043">The CPU count of the license server is not valid.</entry> <!-- MSG_LICENSE_SERVER_CPU_COUNT_INVALID -->
+	<entry key="9044">The USER count of the license server is not valid.</entry> <!-- MSG_LICENSE_SERVER_USER_COUNT_INVALID -->
+	<entry key="9045">The DATE of the license server is not valid.</entry> <!-- MSG_LICENSE_SERVER_DATE_INVALID -->
+	<entry key="9046">Unauthorized client connections.</entry> <!-- MSG_INVALIDATE_CLIENT_CONNECTION -->
+	<entry key="9047">The instance id of the license server is not valid.</entry> <!-- MSG_LICENSE_SERVER_INSTANCE_INVALID -->
+	<entry key="9048">The account id of the license server is not valid.</entry> <!-- MSG_LICENSE_SERVER_ACCOUNT_INVALID -->
+	<entry key="9049">The server session is not valid.</entry> <!-- MSG_SERVER_SESSION_INVALID -->
+	<entry key="9050">Please refresh the client browser or login again.</entry> <!-- MSG_SESSION_INVALID_COMMAND_GUIDE -->
+	
+	<entry key="9051">The file path is not valid.</entry> <!-- MSG_INVALID_FILE_PATH -->
+	<entry key="9052">Error Function</entry> <!-- MSG_FUNCTION_ERROR -->
+	<entry key="9053">The Key of the license server is not valid</entry> <!-- MSG_LICENSE_KEY_ERROR -->
+	
+	<entry key="9054">Editor are not available on real servers.</entry> <!-- MSG_USE_EDIT_METHOD -->
+	
+	<entry key="10001">Parameter sending is completed.</entry> <!-- MSG_LP_SEND_PARAMS_END -->
+	<entry key="10002">Parameter sending is processed.</entry> <!-- MSG_LP_SEND_PARAMS_CONTINUE -->
+	<entry key="10003">Success to get form file contents.</entry> <!-- MSG_LP_SUUCESS_GET_FORMFILE_CONTENT -->
+	<entry key="10004">Failed to get form file contents.</entry> <!-- MSG_LP_FAIL_GET_FORMFILE_CONTENT -->
+	<entry key="10005">Failed to get ServerToken. Response entity is null.</entry> <!-- MSG_LP_FAIL_GET_SERVER_TOKEN -->
+	<entry key="10006">Your request print service is not found.</entry> <!-- MSG_LP_NOTFOUND_PRINTSERVICE -->
+	<entry key="10007">Your print job is canceled.</entry> <!-- MSG_LP_PRINTJOB_CANCEL -->
+	<entry key="10008">Your print job is completed.</entry> <!-- MSG_LP_PRINTJOB_COMPLETED -->
+	<entry key="10009">Your PDF making job is completed.</entry> <!-- MSG_LP_MAKEPDF_COMPLETED -->
+	<entry key="10010">Your PDF making job is canceled.</entry> <!-- MSG_LP_MAKEPDF_CANCELED -->
+	<entry key="10011">Start to make printable pages.</entry> <!-- MSG_LP_START_MAKEPRINT -->
+	<entry key="10012">End of making for printable pages.</entry> <!-- MSG_LP_END_MAKEPRINT -->
+	<entry key="10013">Start to make pdf pages.</entry> <!-- MSG_LP_START_MAKEPDF -->
+	<entry key="10014">End of making for pdf pages.</entry> <!-- MSG_LP_END_MAKEPDF -->
+	<entry key="10015">Start to print job.</entry> <!-- MSG_LP_START_PRINT -->
+	
+	<entry key="10016">End of merging for pdf pages.</entry> <!-- MSG_LP_END_MERGEEPDF -->
+	<entry key="10017">Other job is already processed.</entry> <!-- MSG_LP_JOB_ALEADY_ALLOCATED -->
+	<entry key="10018">Your print preview job is started.</entry> <!-- MSG_LP_PRINT_PREVIEW -->
+	<entry key="10019">Your print preview job is completed.</entry> <!-- MSG_LP_PREVIEWJOB_COMPLETE -->
+	<entry key="10020">Your Excel creating job is end.</entry> <!-- MSG_LP_END_CREATE_EXCEL -->
+	<entry key="10021">Your Excel making job is completed.</entry> <!-- MSG_LP_MAKEEXCEL_COMPLETED -->
+	<entry key="10022">Your TIFF image file making job is completed.</entry> <!-- MSG_LP_MAKETIFF_COMPLETED -->	
+	<entry key="10023">Start to TIFF image making job.</entry> <!-- MSG_LP_MAKETIFF_START -->
+	<entry key="10024">The update version of LocalExporter is required.</entry> <!-- MSG_LP_LOCALEXPORTER_REQUIRED_UPDATE -->	
+	<entry key="10025">Success to get the update url of LocalExporter from UBIFORM server.</entry> <!-- MSG_LP_GET_UPDATER_URL -->	
+	<entry key="10026">The following projectType is not supported</entry> <!-- MSG_LP_FAIL_PROJECT_TYPE -->	
+	<entry key="10027">Your TIFF image file making job is canceled.</entry> <!-- MSG_LP_MAKETIFF_CANCELED -->
+	<entry key="10028">Success get the total page count of printing.</entry> <!-- MSG_LP_PRINTJOB_GET_PAGECOUNT_END -->	
+	<entry key="10029">Your EXCEL making job is canceled.</entry> <!-- MSG_LP_MAKEEXCEL_CANCELED -->
+</properties>

@@ -1,0 +1,278 @@
+2020-02-18 20:40:25,843 +0900 [main] DEBUG (UBWebSocketServer.java:555) - UBIFORM_LocalExportServer Start with IP=127.0.0.1, port=37000, FormFileGetFromServer=true, pdfExportDivCount=500, MessageLang=ko
+2020-02-18 20:40:25,847 +0900 [main] INFO  (UBWebSocketServer.java:69) - Constructor~~~~
+2020-02-18 20:40:25,861 +0900 [main] INFO  (UBWebSocketServer.java:94) - Resource fonts url=C:\Users\user\UBIFORM\UBLocalExporter/fonts
+2020-02-18 20:40:25,861 +0900 [Thread-8] INFO  (JobSokcetConsumer.java:168) - org.ubstorm.server.websocket.JobSokcetConsumer::[Child-0] Start!!!...
+2020-02-18 20:40:26,862 +0900 [Thread-10] INFO  (UDPServer.java:56) - UDPServer Start!!!...
+2020-02-18 20:41:00,319 +0900 [WebSocketWorker-10] INFO  (UBWebSocketServer.java:266) - onOpen() New connection to /127.0.0.1:64659
+2020-02-18 20:41:00,322 +0900 [WebSocketWorker-10] INFO  (UBWebSocketServer.java:285) - onMessage() Received message from /127.0.0.1:64659: 3580
+2020-02-18 20:41:00,325 +0900 [WebSocketWorker-10] DEBUG (UBWebSocketServer.java:316) - onMessage() COMMAND=SENDPARAMS
+2020-02-18 20:41:00,327 +0900 [WebSocketWorker-10] INFO  (UBWebSocketServer.java:285) - onMessage() Received message from /127.0.0.1:64659: 188
+2020-02-18 20:41:00,327 +0900 [WebSocketWorker-10] DEBUG (UBWebSocketServer.java:316) - onMessage() COMMAND=OPEN
+2020-02-18 20:41:00,327 +0900 [Thread-8] INFO  (JobSokcetConsumer.java:205) - org.ubstorm.server.websocket.JobSokcetConsumer::[Child-0] loadSocketProcess!!!...
+2020-02-18 20:41:00,327 +0900 [Thread-8] INFO  (JobSokcetConsumer.java:229) - loadMessageProcess() Received message from /127.0.0.1:64659: 188
+2020-02-18 20:41:00,327 +0900 [Thread-8] DEBUG (JobSokcetConsumer.java:250) - onMessage() COMMAND=OPEN
+2020-02-18 20:41:00,435 +0900 [Thread-8] DEBUG (JobSokcetConsumer.java:277) - loadMessageProcess() UBParams=[{"dataset_0":{"parameter":"%5B%7B%22WBL_PCH_NUM%22%3A%220001410000041%22%2C%22RGST_WBL_KEY_NUM%22%3A%2220200218P065617%22%2C%22OPRT_DT%22%3A%2220200218%22%2C%22PU_BRND_NUM%22%3A%220141%22%2C%22PU_BRND_NM%22%3A%22%EB%A0%88%EB%93%9C%ED%8E%98%EC%9D%B4%EC%8A%A4%22%2C%22PU_BRND_ORG_NUM%22%3A%220011908%22%2C%22PU_BRND_ORG_NM%22%3A%22%EA%B2%80%EB%8B%A8%EC%82%B0%EC%A0%90%22%2C%22PU_ORG_NUM%22%3A%220011656%22%2C%22PU_ORG_CD%22%3A%22075%22%2C%22PU_ORG_NM%22%3A%22%ED%95%98%EB%82%A8%EC%98%81%EC%97%85%EC%86%8C%22%2C%22PU_ADR%22%3A%22%EA%B2%BD%EA%B8%B0%EB%8F%84%20%ED%95%98%EB%82%A8%EC%8B%9C%20%EA%B2%80%EB%8B%A8%EC%82%B0%EB%A1%9C218%EB%B2%88%EA%B8%B8%2031%20%EB%A7%A4%EC%9E%A5%22%2C%22PU_MAIL_NUM%22%3A%2213023%22%2C%22DLVR_BRND_NUM%22%3A%220141%22%2C%22DLVR_BRND_NM%22%3A%22%EB%A0%88%EB%93%9C%ED%8E%98%EC%9D%B4%EC%8A%A4%22%2C%22DLVR_BRND_ORG_NUM%22%3A%220011938%22%2C%22DLVR_BRND_ORG_NM%22%3A%22%EA%B2%BD%EB%82%A8%EB%82%A8%ED%95%B4%EC%A0%90%22%2C%22DLVR_ORG_NUM%22%3A%220011940%22%2C%22DLVR_ORG_CD%22%3A%22730%22%2C%22DLVR_ORG_NM%22%3A%22%EC%84%9C%EC%A7%84%EC%A3%BC%EC%98%81%EC%97%85%EC%86%8C%22%2C%22DLVR_ADR%22%3A%22%EA%B2%BD%EC%83%81%EB%82%A8%EB%8F%84%20%EB%82%A8%ED%95%B4%EA%B5%B0%20%EB%82%A8%ED%95%B4%EC%9D%8D%20%ED%99%94%EC%A0%84%EB%A1%9C%2066%20%EB%A7%A4%EC%9E%A5%22%2C%22DLVR_MAIL_NUM%22%3A%2252424%22%2C%22DRVR_EMP_NUM%22%3A%22%EB%AF%B8%EC%A0%95%22%2C%22ITM_NM%22%3A%22%22%2C%22CGO_ITM_NM%22%3A%22%ED%92%88%EB%AA%85%22%2C%22TRNSMTR_NM%22%3A%22%EB%B0%9C%EC%8B%A0%EC%9D%B8%20%EB%8B%98%22%2C%22RCVR_NM%22%3A%22%EC%88%98%EC%8B%A0%EC%9D%B8%20%EB%8B%98%22%2C%22HUB_ISSUS_INFO%22%3A%22A01-730-%20%22%7D%5D","type":"string"},"stDt":{"parameter":"2019-01-01","type":"string"},"endDt":{"parameter":"2019-12-31","type":"string"}}]
+2020-02-18 20:41:00,436 +0900 [Thread-8] DEBUG (JobSokcetConsumer.java:450) - onMessage() ============= START PRINT PROCESS : [2020-02-18 20:41:00:436]
+2020-02-18 20:41:00,583 +0900 [Thread-8] INFO  (JobSokcetConsumer.java:1614) - getLicenseText() executing requestPOST http://127.0.0.1:8080/UBIServerWeb/ubiform.do HTTP/1.1
+2020-02-18 20:41:00,634 +0900 [Thread-8] DEBUG (JobSokcetConsumer.java:1685) - getLicenseText() SessionId=381ED88B49A3037AC499D76AACCDB139, licenseType=Trial, localExporterUpdateUrl=null, useSimpleJsonFormFile=false
+2020-02-18 20:41:00,635 +0900 [Thread-8] DEBUG (JobSokcetConsumer.java:1847) - getFormXmlData() METHOD_NAME=GetViewXmlData, PROJECT_NAME=WBL, FORM_NAME=WBL_OFFCBRNDWBLREQ_M_01, SESSION_ID=381ED88B49A3037AC499D76AACCDB139, _ubFileLoadType=XML
+2020-02-18 20:41:00,635 +0900 [Thread-8] INFO  (JobSokcetConsumer.java:1864) - getFormXmlData() Executing request POST http://127.0.0.1:8080/UBIServerWeb/ubiform.do HTTP/1.1
+2020-02-18 20:41:00,647 +0900 [Thread-8] DEBUG (JobSokcetConsumer.java:1912) - getFormXmlData() XMLDATA CONTENTS_SIZE=8384
+2020-02-18 20:41:00,696 +0900 [Thread-8] DEBUG (JobSokcetConsumer.java:2008) - getFormXmlData() pageWidth=548, pageHeight=367
+2020-02-18 20:41:00,696 +0900 [Thread-8] INFO  (JobSokcetConsumer.java:2062) - getFormXmlData() result : true - Get form xml data.
+2020-02-18 20:41:00,696 +0900 [Thread-8] INFO  (JobSokcetConsumer.java:1731) - getLicenseText() Success to get form file contents. WBL/WBL_OFFCBRNDWBLREQ_M_01
+2020-02-18 20:41:00,697 +0900 [Thread-8] DEBUG (UDPClient.java:57) - UDP sendMessage()======>{"message":"폼파일 내용을 얻는데 성공하였습니다.WBL\/WBL_OFFCBRNDWBLREQ_M_01","port":"37000","command":"OPEN","code":"10003","type":"SUCCESS","url":""}
+2020-02-18 20:41:00,699 +0900 [WebSocketWorker-10] INFO  (UBWebSocketServer.java:285) - onMessage() Received message from /127.0.0.1:64659: 356
+2020-02-18 20:41:00,700 +0900 [WebSocketWorker-10] DEBUG (UBWebSocketServer.java:316) - onMessage() COMMAND=MAKEPDF
+2020-02-18 20:41:00,700 +0900 [Thread-8] INFO  (JobSokcetConsumer.java:205) - org.ubstorm.server.websocket.JobSokcetConsumer::[Child-0] loadSocketProcess!!!...
+2020-02-18 20:41:00,700 +0900 [Thread-8] INFO  (JobSokcetConsumer.java:229) - loadMessageProcess() Received message from /127.0.0.1:64659: 356
+2020-02-18 20:41:00,700 +0900 [Thread-8] DEBUG (JobSokcetConsumer.java:250) - onMessage() COMMAND=MAKEPDF
+2020-02-18 20:41:00,702 +0900 [Thread-8] DEBUG (JobSokcetConsumer.java:277) - loadMessageProcess() UBParams=[{"dataset_0":{"parameter":"%5B%7B%22WBL_PCH_NUM%22%3A%220001410000041%22%2C%22RGST_WBL_KEY_NUM%22%3A%2220200218P065617%22%2C%22OPRT_DT%22%3A%2220200218%22%2C%22PU_BRND_NUM%22%3A%220141%22%2C%22PU_BRND_NM%22%3A%22%EB%A0%88%EB%93%9C%ED%8E%98%EC%9D%B4%EC%8A%A4%22%2C%22PU_BRND_ORG_NUM%22%3A%220011908%22%2C%22PU_BRND_ORG_NM%22%3A%22%EA%B2%80%EB%8B%A8%EC%82%B0%EC%A0%90%22%2C%22PU_ORG_NUM%22%3A%220011656%22%2C%22PU_ORG_CD%22%3A%22075%22%2C%22PU_ORG_NM%22%3A%22%ED%95%98%EB%82%A8%EC%98%81%EC%97%85%EC%86%8C%22%2C%22PU_ADR%22%3A%22%EA%B2%BD%EA%B8%B0%EB%8F%84%20%ED%95%98%EB%82%A8%EC%8B%9C%20%EA%B2%80%EB%8B%A8%EC%82%B0%EB%A1%9C218%EB%B2%88%EA%B8%B8%2031%20%EB%A7%A4%EC%9E%A5%22%2C%22PU_MAIL_NUM%22%3A%2213023%22%2C%22DLVR_BRND_NUM%22%3A%220141%22%2C%22DLVR_BRND_NM%22%3A%22%EB%A0%88%EB%93%9C%ED%8E%98%EC%9D%B4%EC%8A%A4%22%2C%22DLVR_BRND_ORG_NUM%22%3A%220011938%22%2C%22DLVR_BRND_ORG_NM%22%3A%22%EA%B2%BD%EB%82%A8%EB%82%A8%ED%95%B4%EC%A0%90%22%2C%22DLVR_ORG_NUM%22%3A%220011940%22%2C%22DLVR_ORG_CD%22%3A%22730%22%2C%22DLVR_ORG_NM%22%3A%22%EC%84%9C%EC%A7%84%EC%A3%BC%EC%98%81%EC%97%85%EC%86%8C%22%2C%22DLVR_ADR%22%3A%22%EA%B2%BD%EC%83%81%EB%82%A8%EB%8F%84%20%EB%82%A8%ED%95%B4%EA%B5%B0%20%EB%82%A8%ED%95%B4%EC%9D%8D%20%ED%99%94%EC%A0%84%EB%A1%9C%2066%20%EB%A7%A4%EC%9E%A5%22%2C%22DLVR_MAIL_NUM%22%3A%2252424%22%2C%22DRVR_EMP_NUM%22%3A%22%EB%AF%B8%EC%A0%95%22%2C%22ITM_NM%22%3A%22%22%2C%22CGO_ITM_NM%22%3A%22%ED%92%88%EB%AA%85%22%2C%22TRNSMTR_NM%22%3A%22%EB%B0%9C%EC%8B%A0%EC%9D%B8%20%EB%8B%98%22%2C%22RCVR_NM%22%3A%22%EC%88%98%EC%8B%A0%EC%9D%B8%20%EB%8B%98%22%2C%22HUB_ISSUS_INFO%22%3A%22A01-730-%20%22%7D%5D","type":"string"},"stDt":{"parameter":"2019-01-01","type":"string"},"endDt":{"parameter":"2019-12-31","type":"string"}}]
+2020-02-18 20:41:00,703 +0900 [Thread-8] DEBUG (xmlToUbForm.java:3114) - org.ubstorm.service.parser.xmlToUbForm::Call pdfExportManager_pages...clientEditMode=null
+2020-02-18 20:41:00,753 +0900 [Thread-8] DEBUG (xmlToUbForm.java:3160) - org.ubstorm.service.parser.xmlToUbForm::pdfExportManager_pages...UB_PRINT_USE_UI={parameter=false, type=String}
+2020-02-18 20:41:00,814 +0900 [Thread-8] DEBUG (xmlToUbForm.java:3175) - org.ubstorm.service.parser.xmlToUbForm::Call pdfExportManager..._changeDataSet == null
+2020-02-18 20:41:00,816 +0900 [Thread-8] DEBUG (DataSetProcess.java:57) - org.ubstorm.service.parser.DataSetProcess:: _xmlDataSetItems.size()=1
+2020-02-18 20:41:00,824 +0900 [Thread-11] INFO  (JobDataSetConsumer.java:86) -  Start!!!...
+2020-02-18 20:41:00,825 +0900 [Thread-11] DEBUG (JobDataSetConsumer.java:642) - connection() DATASET_LOAD_TYPE =param
+2020-02-18 20:41:00,826 +0900 [Thread-11] DEBUG (JobDataSetConsumer.java:696) - connection() ============= PARAM DATASET ID :  dataset_0,	DATASET COUNT : 1
+2020-02-18 20:41:00,827 +0900 [Thread-11] DEBUG (JobDataSetConsumer.java:1114) - connection() ============== DATASET COUNT : 1
+2020-02-18 20:41:00,827 +0900 [Thread-11] INFO  (JobDataSetConsumer.java:108) -  loadDatasetProcess success!
+2020-02-18 20:41:00,833 +0900 [Thread-11] INFO  (JobDataSetConsumer.java:137) -  End...
+2020-02-18 20:41:00,841 +0900 [Thread-8] INFO  (ubFormToPDF.java:381) - org.ubstorm.service.parser.ubFormToPDF::Call pdfPagePropertySetting()...
+2020-02-18 20:41:00,896 +0900 [Thread-8] DEBUG (UDPClient.java:57) - UDP sendMessage()======>{"message":"시스템에서 예외가 발생하였습니다. 관리자에게 문의 바랍니다.-Can't initialize jni4net Bridge","port":"37000","command":"MAKEPDF","code":"9000","type":"FAIL","url":""}
+2020-02-18 20:41:40,073 +0900 [main] DEBUG (UBWebSocketServer.java:555) - UBIFORM_LocalExportServer Start with IP=127.0.0.1, port=37000, FormFileGetFromServer=true, pdfExportDivCount=500, MessageLang=ko
+2020-02-18 20:41:40,078 +0900 [main] INFO  (UBWebSocketServer.java:69) - Constructor~~~~
+2020-02-18 20:41:40,093 +0900 [main] INFO  (UBWebSocketServer.java:94) - Resource fonts url=C:\Users\user\UBIFORM\UBLocalExporter/fonts
+2020-02-18 20:41:40,093 +0900 [Thread-8] INFO  (JobSokcetConsumer.java:168) - org.ubstorm.server.websocket.JobSokcetConsumer::[Child-0] Start!!!...
+2020-02-18 20:41:41,013 +0900 [Thread-10] INFO  (UDPServer.java:56) - UDPServer Start!!!...
+2020-02-18 20:41:47,320 +0900 [WebSocketWorker-9] INFO  (UBWebSocketServer.java:266) - onOpen() New connection to /127.0.0.1:64936
+2020-02-18 20:41:47,323 +0900 [WebSocketWorker-9] INFO  (UBWebSocketServer.java:285) - onMessage() Received message from /127.0.0.1:64936: 3580
+2020-02-18 20:41:47,329 +0900 [WebSocketWorker-9] DEBUG (UBWebSocketServer.java:316) - onMessage() COMMAND=SENDPARAMS
+2020-02-18 20:41:47,330 +0900 [WebSocketWorker-9] INFO  (UBWebSocketServer.java:285) - onMessage() Received message from /127.0.0.1:64936: 188
+2020-02-18 20:41:47,330 +0900 [WebSocketWorker-9] DEBUG (UBWebSocketServer.java:316) - onMessage() COMMAND=OPEN
+2020-02-18 20:41:47,330 +0900 [Thread-8] INFO  (JobSokcetConsumer.java:205) - org.ubstorm.server.websocket.JobSokcetConsumer::[Child-0] loadSocketProcess!!!...
+2020-02-18 20:41:47,330 +0900 [Thread-8] INFO  (JobSokcetConsumer.java:229) - loadMessageProcess() Received message from /127.0.0.1:64936: 188
+2020-02-18 20:41:47,331 +0900 [Thread-8] DEBUG (JobSokcetConsumer.java:250) - onMessage() COMMAND=OPEN
+2020-02-18 20:41:47,452 +0900 [Thread-8] DEBUG (JobSokcetConsumer.java:277) - loadMessageProcess() UBParams=[{"dataset_0":{"parameter":"%5B%7B%22WBL_PCH_NUM%22%3A%220001410000041%22%2C%22RGST_WBL_KEY_NUM%22%3A%2220200218P065617%22%2C%22OPRT_DT%22%3A%2220200218%22%2C%22PU_BRND_NUM%22%3A%220141%22%2C%22PU_BRND_NM%22%3A%22%EB%A0%88%EB%93%9C%ED%8E%98%EC%9D%B4%EC%8A%A4%22%2C%22PU_BRND_ORG_NUM%22%3A%220011908%22%2C%22PU_BRND_ORG_NM%22%3A%22%EA%B2%80%EB%8B%A8%EC%82%B0%EC%A0%90%22%2C%22PU_ORG_NUM%22%3A%220011656%22%2C%22PU_ORG_CD%22%3A%22075%22%2C%22PU_ORG_NM%22%3A%22%ED%95%98%EB%82%A8%EC%98%81%EC%97%85%EC%86%8C%22%2C%22PU_ADR%22%3A%22%EA%B2%BD%EA%B8%B0%EB%8F%84%20%ED%95%98%EB%82%A8%EC%8B%9C%20%EA%B2%80%EB%8B%A8%EC%82%B0%EB%A1%9C218%EB%B2%88%EA%B8%B8%2031%20%EB%A7%A4%EC%9E%A5%22%2C%22PU_MAIL_NUM%22%3A%2213023%22%2C%22DLVR_BRND_NUM%22%3A%220141%22%2C%22DLVR_BRND_NM%22%3A%22%EB%A0%88%EB%93%9C%ED%8E%98%EC%9D%B4%EC%8A%A4%22%2C%22DLVR_BRND_ORG_NUM%22%3A%220011938%22%2C%22DLVR_BRND_ORG_NM%22%3A%22%EA%B2%BD%EB%82%A8%EB%82%A8%ED%95%B4%EC%A0%90%22%2C%22DLVR_ORG_NUM%22%3A%220011940%22%2C%22DLVR_ORG_CD%22%3A%22730%22%2C%22DLVR_ORG_NM%22%3A%22%EC%84%9C%EC%A7%84%EC%A3%BC%EC%98%81%EC%97%85%EC%86%8C%22%2C%22DLVR_ADR%22%3A%22%EA%B2%BD%EC%83%81%EB%82%A8%EB%8F%84%20%EB%82%A8%ED%95%B4%EA%B5%B0%20%EB%82%A8%ED%95%B4%EC%9D%8D%20%ED%99%94%EC%A0%84%EB%A1%9C%2066%20%EB%A7%A4%EC%9E%A5%22%2C%22DLVR_MAIL_NUM%22%3A%2252424%22%2C%22DRVR_EMP_NUM%22%3A%22%EB%AF%B8%EC%A0%95%22%2C%22ITM_NM%22%3A%22%22%2C%22CGO_ITM_NM%22%3A%22%ED%92%88%EB%AA%85%22%2C%22TRNSMTR_NM%22%3A%22%EB%B0%9C%EC%8B%A0%EC%9D%B8%20%EB%8B%98%22%2C%22RCVR_NM%22%3A%22%EC%88%98%EC%8B%A0%EC%9D%B8%20%EB%8B%98%22%2C%22HUB_ISSUS_INFO%22%3A%22A01-730-%20%22%7D%5D","type":"string"},"stDt":{"parameter":"2019-01-01","type":"string"},"endDt":{"parameter":"2019-12-31","type":"string"}}]
+2020-02-18 20:41:47,453 +0900 [Thread-8] DEBUG (JobSokcetConsumer.java:450) - onMessage() ============= START PRINT PROCESS : [2020-02-18 20:41:47:453]
+2020-02-18 20:41:47,567 +0900 [Thread-8] INFO  (JobSokcetConsumer.java:1614) - getLicenseText() executing requestPOST http://127.0.0.1:8080/UBIServerWeb/ubiform.do HTTP/1.1
+2020-02-18 20:41:47,608 +0900 [Thread-8] DEBUG (JobSokcetConsumer.java:1685) - getLicenseText() SessionId=4360B70C8789B4A1E8EF7945F428FE45, licenseType=Trial, localExporterUpdateUrl=null, useSimpleJsonFormFile=false
+2020-02-18 20:41:47,608 +0900 [Thread-8] DEBUG (JobSokcetConsumer.java:1847) - getFormXmlData() METHOD_NAME=GetViewXmlData, PROJECT_NAME=WBL, FORM_NAME=WBL_OFFCBRNDWBLREQ_M_01, SESSION_ID=4360B70C8789B4A1E8EF7945F428FE45, _ubFileLoadType=XML
+2020-02-18 20:41:47,608 +0900 [Thread-8] INFO  (JobSokcetConsumer.java:1864) - getFormXmlData() Executing request POST http://127.0.0.1:8080/UBIServerWeb/ubiform.do HTTP/1.1
+2020-02-18 20:41:47,616 +0900 [Thread-8] DEBUG (JobSokcetConsumer.java:1912) - getFormXmlData() XMLDATA CONTENTS_SIZE=8384
+2020-02-18 20:41:47,643 +0900 [Thread-8] DEBUG (JobSokcetConsumer.java:2008) - getFormXmlData() pageWidth=548, pageHeight=367
+2020-02-18 20:41:47,643 +0900 [Thread-8] INFO  (JobSokcetConsumer.java:2062) - getFormXmlData() result : true - Get form xml data.
+2020-02-18 20:41:47,643 +0900 [Thread-8] INFO  (JobSokcetConsumer.java:1731) - getLicenseText() Success to get form file contents. WBL/WBL_OFFCBRNDWBLREQ_M_01
+2020-02-18 20:41:47,643 +0900 [Thread-8] DEBUG (UDPClient.java:57) - UDP sendMessage()======>{"message":"폼파일 내용을 얻는데 성공하였습니다.WBL\/WBL_OFFCBRNDWBLREQ_M_01","port":"37000","command":"OPEN","code":"10003","type":"SUCCESS","url":""}
+2020-02-18 20:41:47,645 +0900 [WebSocketWorker-9] INFO  (UBWebSocketServer.java:285) - onMessage() Received message from /127.0.0.1:64936: 356
+2020-02-18 20:41:47,646 +0900 [WebSocketWorker-9] DEBUG (UBWebSocketServer.java:316) - onMessage() COMMAND=MAKEPDF
+2020-02-18 20:41:47,646 +0900 [Thread-8] INFO  (JobSokcetConsumer.java:205) - org.ubstorm.server.websocket.JobSokcetConsumer::[Child-0] loadSocketProcess!!!...
+2020-02-18 20:41:47,646 +0900 [Thread-8] INFO  (JobSokcetConsumer.java:229) - loadMessageProcess() Received message from /127.0.0.1:64936: 356
+2020-02-18 20:41:47,646 +0900 [Thread-8] DEBUG (JobSokcetConsumer.java:250) - onMessage() COMMAND=MAKEPDF
+2020-02-18 20:41:47,647 +0900 [Thread-8] DEBUG (JobSokcetConsumer.java:277) - loadMessageProcess() UBParams=[{"dataset_0":{"parameter":"%5B%7B%22WBL_PCH_NUM%22%3A%220001410000041%22%2C%22RGST_WBL_KEY_NUM%22%3A%2220200218P065617%22%2C%22OPRT_DT%22%3A%2220200218%22%2C%22PU_BRND_NUM%22%3A%220141%22%2C%22PU_BRND_NM%22%3A%22%EB%A0%88%EB%93%9C%ED%8E%98%EC%9D%B4%EC%8A%A4%22%2C%22PU_BRND_ORG_NUM%22%3A%220011908%22%2C%22PU_BRND_ORG_NM%22%3A%22%EA%B2%80%EB%8B%A8%EC%82%B0%EC%A0%90%22%2C%22PU_ORG_NUM%22%3A%220011656%22%2C%22PU_ORG_CD%22%3A%22075%22%2C%22PU_ORG_NM%22%3A%22%ED%95%98%EB%82%A8%EC%98%81%EC%97%85%EC%86%8C%22%2C%22PU_ADR%22%3A%22%EA%B2%BD%EA%B8%B0%EB%8F%84%20%ED%95%98%EB%82%A8%EC%8B%9C%20%EA%B2%80%EB%8B%A8%EC%82%B0%EB%A1%9C218%EB%B2%88%EA%B8%B8%2031%20%EB%A7%A4%EC%9E%A5%22%2C%22PU_MAIL_NUM%22%3A%2213023%22%2C%22DLVR_BRND_NUM%22%3A%220141%22%2C%22DLVR_BRND_NM%22%3A%22%EB%A0%88%EB%93%9C%ED%8E%98%EC%9D%B4%EC%8A%A4%22%2C%22DLVR_BRND_ORG_NUM%22%3A%220011938%22%2C%22DLVR_BRND_ORG_NM%22%3A%22%EA%B2%BD%EB%82%A8%EB%82%A8%ED%95%B4%EC%A0%90%22%2C%22DLVR_ORG_NUM%22%3A%220011940%22%2C%22DLVR_ORG_CD%22%3A%22730%22%2C%22DLVR_ORG_NM%22%3A%22%EC%84%9C%EC%A7%84%EC%A3%BC%EC%98%81%EC%97%85%EC%86%8C%22%2C%22DLVR_ADR%22%3A%22%EA%B2%BD%EC%83%81%EB%82%A8%EB%8F%84%20%EB%82%A8%ED%95%B4%EA%B5%B0%20%EB%82%A8%ED%95%B4%EC%9D%8D%20%ED%99%94%EC%A0%84%EB%A1%9C%2066%20%EB%A7%A4%EC%9E%A5%22%2C%22DLVR_MAIL_NUM%22%3A%2252424%22%2C%22DRVR_EMP_NUM%22%3A%22%EB%AF%B8%EC%A0%95%22%2C%22ITM_NM%22%3A%22%22%2C%22CGO_ITM_NM%22%3A%22%ED%92%88%EB%AA%85%22%2C%22TRNSMTR_NM%22%3A%22%EB%B0%9C%EC%8B%A0%EC%9D%B8%20%EB%8B%98%22%2C%22RCVR_NM%22%3A%22%EC%88%98%EC%8B%A0%EC%9D%B8%20%EB%8B%98%22%2C%22HUB_ISSUS_INFO%22%3A%22A01-730-%20%22%7D%5D","type":"string"},"stDt":{"parameter":"2019-01-01","type":"string"},"endDt":{"parameter":"2019-12-31","type":"string"}}]
+2020-02-18 20:41:47,648 +0900 [Thread-8] DEBUG (xmlToUbForm.java:3114) - org.ubstorm.service.parser.xmlToUbForm::Call pdfExportManager_pages...clientEditMode=null
+2020-02-18 20:41:47,706 +0900 [Thread-8] DEBUG (xmlToUbForm.java:3160) - org.ubstorm.service.parser.xmlToUbForm::pdfExportManager_pages...UB_PRINT_USE_UI={parameter=false, type=String}
+2020-02-18 20:41:47,724 +0900 [Thread-8] DEBUG (xmlToUbForm.java:3175) - org.ubstorm.service.parser.xmlToUbForm::Call pdfExportManager..._changeDataSet == null
+2020-02-18 20:41:47,725 +0900 [Thread-8] DEBUG (DataSetProcess.java:57) - org.ubstorm.service.parser.DataSetProcess:: _xmlDataSetItems.size()=1
+2020-02-18 20:41:47,730 +0900 [Thread-11] INFO  (JobDataSetConsumer.java:86) -  Start!!!...
+2020-02-18 20:41:47,730 +0900 [Thread-11] DEBUG (JobDataSetConsumer.java:642) - connection() DATASET_LOAD_TYPE =param
+2020-02-18 20:41:47,730 +0900 [Thread-11] DEBUG (JobDataSetConsumer.java:696) - connection() ============= PARAM DATASET ID :  dataset_0,	DATASET COUNT : 1
+2020-02-18 20:41:47,730 +0900 [Thread-11] DEBUG (JobDataSetConsumer.java:1114) - connection() ============== DATASET COUNT : 1
+2020-02-18 20:41:47,731 +0900 [Thread-11] INFO  (JobDataSetConsumer.java:108) -  loadDatasetProcess success!
+2020-02-18 20:41:47,740 +0900 [Thread-11] INFO  (JobDataSetConsumer.java:137) -  End...
+2020-02-18 20:41:47,747 +0900 [Thread-8] INFO  (ubFormToPDF.java:381) - org.ubstorm.service.parser.ubFormToPDF::Call pdfPagePropertySetting()...
+2020-02-18 20:41:48,088 +0900 [Thread-8] DEBUG (xmlToUbForm.java:7436) - getExportAllPages Start 
+2020-02-18 20:41:48,096 +0900 [Thread-8] DEBUG (UDPClient.java:57) - UDP sendMessage()======>{"message":"PDF 페이지 생성작업을 시작합니다.","port":"37000","command":"MAKEPDF_START","code":"10013","type":"SUCCESS"}
+2020-02-18 20:41:48,097 +0900 [Thread-8] DEBUG (xmlToUbForm.java:7618) - org.ubstorm.service.parser.xmlToUbForm::TOTAL PAGE =========>1
+2020-02-18 20:41:48,234 +0900 [Thread-8] INFO  (common.java:1420) - Call getLocalBarcodeImageToBase64..IMG_TYPE=barcode, modeltype=code128
+2020-02-18 20:41:48,331 +0900 [Thread-8] INFO  (common.java:1420) - Call getLocalBarcodeImageToBase64..IMG_TYPE=barcode, modeltype=code128
+2020-02-18 20:41:48,339 +0900 [Thread-8] INFO  (common.java:1420) - Call getLocalBarcodeImageToBase64..IMG_TYPE=barcode, modeltype=code128
+2020-02-18 20:41:48,343 +0900 [Thread-8] INFO  (common.java:1420) - Call getLocalBarcodeImageToBase64..IMG_TYPE=barcode, modeltype=code128
+2020-02-18 20:41:48,421 +0900 [Thread-8] DEBUG (ubFormToPDF.java:4036) - toPdfOnePage() :: mTotalPageCount:curPageIndex=====>1:1
+2020-02-18 20:41:48,422 +0900 [Thread-8] DEBUG (UDPClient.java:57) - UDP sendMessage()======>{"message":"Make Pdf page : 1\/1","port":"37000","command":"MAKEPDF","code":"99999","type":"SUCCESS"}
+2020-02-18 20:41:48,432 +0900 [Thread-8] DEBUG (UDPClient.java:57) - UDP sendMessage()======>{"message":"PDF 페이지 생성작업이 완료되었습니다.","port":"37000","command":"MAKEPDF_END","code":"10014","type":"SUCCESS"}
+2020-02-18 20:41:48,433 +0900 [Thread-8] DEBUG (ubFormToPDF.java:4342) -  START : [2020-02-18 20:41:48:433]
+2020-02-18 20:41:48,434 +0900 [Thread-8] DEBUG (ubFormToPDF.java:4344) - =========== SAVE PDF PAGE_SIZE : 1
+2020-02-18 20:41:48,702 +0900 [Thread-8] DEBUG (ubFormToPDF.java:4400) -  START : [2020-02-18 20:41:48:702]
+2020-02-18 20:41:48,702 +0900 [Thread-8] INFO  (ubFormToPDF.java:4401) - ================= ONE FILE END >>>>>>> [ 0:0.269 ]
+2020-02-18 20:41:48,702 +0900 [Thread-8] DEBUG (UDPClient.java:57) - UDP sendMessage()======>{"message":"Merging Pdf Pages...","port":"37000","command":"MERGEPDF","code":"99999","type":"SUCCESS"}
+2020-02-18 20:41:48,774 +0900 [Thread-8] DEBUG (ubFormToPDF.java:4478) - PdfMerge::MergePdfFiles() returnValue=S:WBL_OFFCBRNDWBLREQ_M_01_20200218_204147746_out
+2020-02-18 20:41:48,774 +0900 [Thread-8] DEBUG (UDPClient.java:57) - UDP sendMessage()======>{"message":"PDF 페이지 통합작업이 완료되었습니다.","port":"37000","command":"MERGEPDF_END","code":"10016","type":"SUCCESS","url":"C:\\Users\\user\/Downloads\/ubformLocal\/37000\/WBL_OFFCBRNDWBLREQ_M_01_20200218_204147746_out.pdf"}
+2020-02-18 20:41:48,775 +0900 [Thread-8] DEBUG (JobSokcetConsumer.java:1218) - onMessage() Desktop.isDesktopSupported()!!~~~_pdfExportFilePath=null
+2020-02-18 20:41:57,532 +0900 [Thread-8] DEBUG (JobSokcetConsumer.java:1289) - onMessage() Save as file: C:\Users\user\Desktop\WBL_OFFCBRNDWBLREQ_M_01_20200218_204147746_out.pdf
+2020-02-18 20:41:57,658 +0900 [Thread-8] INFO  (JobSokcetConsumer.java:1306) - onMessage() SUCCESS - PDF 생성작업이 완료되었습니다.
+2020-02-18 20:41:57,659 +0900 [Thread-8] DEBUG (UDPClient.java:57) - UDP sendMessage()======>{"message":"PDF 생성작업이 완료되었습니다.","port":"37000","command":"PDFEND","code":"10009","type":"SUCCESS","url":"C:\\Users\\user\\Desktop\\WBL_OFFCBRNDWBLREQ_M_01_20200218_204147746_out.pdf"}
+2020-02-18 20:41:57,662 +0900 [WebsocketSelector1] INFO  (UBWebSocketServer.java:275) - onClose() Closed /127.0.0.1:64936 with exit code 1005 additional info: 
+2020-02-20 11:23:58,864 +0900 [WebSocketWorker-16] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:65444: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-20 11:40:32,852 +0900 [WebSocketWorker-13] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:49361: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-20 13:04:37,301 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:49986: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-20 13:09:05,879 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:50117: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-20 15:00:35,237 +0900 [main] ERROR (UDPServer.java:31) - UDPServer::SocketException-Address already in use: Cannot bind
+2020-02-20 15:00:35,247 +0900 [WebsocketSelector1] ERROR (UBWebSocketServer.java:432) - onError() Address already in use: bind
+2020-02-20 15:00:44,776 +0900 [main] ERROR (UDPServer.java:31) - UDPServer::SocketException-Address already in use: Cannot bind
+2020-02-20 15:00:44,791 +0900 [WebsocketSelector1] ERROR (UBWebSocketServer.java:432) - onError() Address already in use: bind
+2020-02-20 20:00:08,213 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:58271: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-20 20:00:32,429 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:58271: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-20 20:01:40,284 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:58271: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-20 20:22:27,587 +0900 [WebSocketWorker-9] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:58947: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 09:07:23,832 +0900 [WebSocketWorker-9] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:58947: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 09:49:44,083 +0900 [WebSocketWorker-11] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:61596: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 09:51:22,499 +0900 [WebSocketWorker-11] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:61596: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 09:51:27,330 +0900 [WebSocketWorker-11] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:61596: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 09:54:22,738 +0900 [WebSocketWorker-13] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:61676: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:00:50,093 +0900 [main] ERROR (UDPServer.java:31) - UDPServer::SocketException-Address already in use: Cannot bind
+2020-02-21 10:00:50,103 +0900 [WebsocketSelector1] ERROR (UBWebSocketServer.java:432) - onError() Address already in use: bind
+2020-02-21 10:02:44,178 +0900 [main] ERROR (UDPServer.java:31) - UDPServer::SocketException-Address already in use: Cannot bind
+2020-02-21 10:02:44,187 +0900 [WebsocketSelector1] ERROR (UBWebSocketServer.java:432) - onError() Address already in use: bind
+2020-02-21 10:08:58,721 +0900 [main] ERROR (UDPServer.java:31) - UDPServer::SocketException-Address already in use: Cannot bind
+2020-02-21 10:08:58,735 +0900 [WebsocketSelector1] ERROR (UBWebSocketServer.java:432) - onError() Address already in use: bind
+2020-02-21 10:22:03,384 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:62273: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:22:10,096 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:62273: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:22:11,112 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:62273: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:22:11,400 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:62273: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:22:11,656 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:62273: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:22:11,897 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:62273: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:22:12,119 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:62273: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:22:12,336 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:62273: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:22:12,527 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:62273: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:22:12,752 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:62273: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:22:12,960 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:62273: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:22:13,176 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:62273: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:22:13,378 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:62273: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:22:13,585 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:62273: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:22:13,771 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:62273: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:28:57,696 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:62313: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:51:47,529 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:350) - onMessage()/127.0.0.1:63087: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:52:02,406 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:350) - onMessage()/127.0.0.1:63087: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:52:03,469 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:350) - onMessage()/127.0.0.1:63087: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:52:04,671 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:350) - onMessage()/127.0.0.1:63087: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:52:48,965 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:350) - onMessage()/127.0.0.1:63087: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:52:52,414 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:350) - onMessage()/127.0.0.1:63087: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:52:59,813 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:350) - onMessage()/127.0.0.1:63087: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:53:21,413 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:350) - onMessage()/127.0.0.1:63087: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 10:53:30,502 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:350) - onMessage()/127.0.0.1:63087: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-21 13:56:44,088 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:357) - onMessage()/127.0.0.1:63087: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 09:36:22,324 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:58410: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 09:47:28,905 +0900 [WebSocketWorker-15] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:58491: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:09:14,328 +0900 [WebSocketWorker-15] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:58491: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:09:23,423 +0900 [WebSocketWorker-15] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:58491: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:09:26,904 +0900 [WebSocketWorker-16] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:58838: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:09:32,024 +0900 [WebSocketWorker-11] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:58841: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:09:44,736 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:58846: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:10:03,744 +0900 [WebSocketWorker-13] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:58848: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:11:02,048 +0900 [WebSocketWorker-14] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:58871: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:12:00,000 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:58880: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:12:01,144 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:58880: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:12:19,768 +0900 [WebSocketWorker-11] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:58882: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:12:41,952 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:58885: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:13:02,439 +0900 [WebSocketWorker-13] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:58893: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:13:17,384 +0900 [WebSocketWorker-15] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:58896: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:14:40,640 +0900 [WebSocketWorker-16] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:58925: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:15:06,727 +0900 [WebSocketWorker-9] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:58957: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:22:49,943 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:59015: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:23:00,368 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:59015: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:23:04,542 +0900 [WebSocketWorker-11] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:59020: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:35:36,783 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:59029: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:35:51,037 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:59029: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:36:35,262 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:59029: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:45:28,718 +0900 [WebSocketWorker-9] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:59205: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:45:38,348 +0900 [WebSocketWorker-9] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:59205: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:45:41,532 +0900 [WebSocketWorker-9] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:59205: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:45:45,334 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:59267: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:45:56,605 +0900 [WebSocketWorker-11] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:59268: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:47:06,349 +0900 [WebSocketWorker-11] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:59268: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:47:06,708 +0900 [WebSocketWorker-11] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:59268: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:54:52,469 +0900 [WebSocketWorker-9] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:59282: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:54:53,836 +0900 [WebSocketWorker-9] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:59282: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 10:55:12,876 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:59324: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 11:00:19,092 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:59324: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 11:17:37,482 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:59389: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 11:42:29,041 +0900 [WebSocketWorker-14] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:59784: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 12:33:49,181 +0900 [WebSocketWorker-13] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:60160: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 12:35:19,518 +0900 [WebSocketWorker-13] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:60172: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 13:00:58,802 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:60541: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 13:05:12,747 +0900 [WebSocketWorker-9] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:60547: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 13:05:23,138 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:60611: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 13:05:24,154 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:60611: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 13:05:36,843 +0900 [WebSocketWorker-11] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:60617: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 13:05:39,820 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:60618: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 13:19:10,035 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:60721: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 13:25:46,225 +0900 [WebSocketWorker-13] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:60797: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 13:27:30,393 +0900 [WebSocketWorker-13] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:60843: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 14:01:55,366 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:60849: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 14:10:19,805 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:61290: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 14:21:17,422 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF7577833727203334481.tmp
+2020-02-24 14:21:28,351 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF3432759542058158518.tmp
+2020-02-24 14:22:19,807 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF3479102389227719502.tmp
+2020-02-24 14:22:50,989 +0900 [WebSocketWorker-13] ERROR (UBWebSocketServer.java:367) - onMessage()/127.0.0.1:61595: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 14:23:00,927 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF450710628841112857.tmp
+2020-02-24 14:31:33,368 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF4233746901752529126.tmp
+2020-02-24 14:32:54,920 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF7500092159687419429.tmp
+2020-02-24 14:33:43,765 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF7145640017335517345.tmp
+2020-02-24 14:34:42,284 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF2675524113423952804.tmp
+2020-02-24 14:35:26,194 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF4995155705036998079.tmp
+2020-02-24 14:37:27,167 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF4708927011651804376.tmp
+2020-02-24 14:38:16,093 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF3380876020240846812.tmp
+2020-02-24 14:38:16,096 +0900 [main] ERROR (UDPServer.java:31) - UDPServer::SocketException-Address already in use: Cannot bind
+2020-02-24 14:38:16,107 +0900 [WebsocketSelector1] ERROR (UBWebSocketServer.java:501) - onError() Address already in use: bind
+2020-02-24 14:39:02,126 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF5178846268523089181.tmp
+2020-02-24 14:39:44,633 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF3329662550759859103.tmp
+2020-02-24 14:39:44,636 +0900 [main] ERROR (UDPServer.java:31) - UDPServer::SocketException-Address already in use: Cannot bind
+2020-02-24 14:39:44,647 +0900 [WebsocketSelector1] ERROR (UBWebSocketServer.java:501) - onError() Address already in use: bind
+2020-02-24 14:41:08,460 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF5330405840459233061.tmp
+2020-02-24 14:42:36,608 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF5930141282488346080.tmp
+2020-02-24 14:43:03,210 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF67103809123041313.tmp
+2020-02-24 14:48:54,562 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF1564546723633584867.tmp
+2020-02-24 14:50:41,691 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF1305226790049227757.tmp
+2020-02-24 14:50:54,862 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF8394806738097002118.tmp
+2020-02-24 14:51:42,445 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF3970301134463209845.tmp
+2020-02-24 14:53:15,498 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF1681840675858479426.tmp
+2020-02-24 14:55:20,348 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF51021734164998547.tmp
+2020-02-24 15:04:56,953 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF3693810224550961600.tmp
+2020-02-24 15:14:06,336 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF4196811942052644508.tmp
+2020-02-24 15:14:06,339 +0900 [main] ERROR (UDPServer.java:31) - UDPServer::SocketException-Address already in use: Cannot bind
+2020-02-24 15:14:06,351 +0900 [WebsocketSelector1] ERROR (UBWebSocketServer.java:501) - onError() Address already in use: bind
+2020-02-24 15:14:56,052 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF336622321948155445.tmp
+2020-02-24 15:14:56,054 +0900 [main] ERROR (UDPServer.java:31) - UDPServer::SocketException-Address already in use: Cannot bind
+2020-02-24 15:14:56,065 +0900 [WebsocketSelector1] ERROR (UBWebSocketServer.java:501) - onError() Address already in use: bind
+2020-02-24 15:15:47,177 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF6265892169435726895.tmp
+2020-02-24 15:15:47,179 +0900 [main] ERROR (UDPServer.java:31) - UDPServer::SocketException-Address already in use: Cannot bind
+2020-02-24 15:15:47,189 +0900 [WebsocketSelector1] ERROR (UBWebSocketServer.java:501) - onError() Address already in use: bind
+2020-02-24 15:17:01,080 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF3275633767150853372.tmp
+2020-02-24 15:17:01,082 +0900 [main] ERROR (UDPServer.java:31) - UDPServer::SocketException-Address already in use: Cannot bind
+2020-02-24 15:17:01,092 +0900 [WebsocketSelector1] ERROR (UBWebSocketServer.java:501) - onError() Address already in use: bind
+2020-02-24 15:17:49,956 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF6764042562460755570.tmp
+2020-02-24 15:17:49,958 +0900 [main] ERROR (UDPServer.java:31) - UDPServer::SocketException-Address already in use: Cannot bind
+2020-02-24 15:17:49,967 +0900 [WebsocketSelector1] ERROR (UBWebSocketServer.java:501) - onError() Address already in use: bind
+2020-02-24 15:19:09,721 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF4778891789414644950.tmp
+2020-02-24 15:21:25,437 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF7390787920136248553.tmp
+2020-02-24 15:21:25,440 +0900 [main] ERROR (UDPServer.java:31) - UDPServer::SocketException-Address already in use: Cannot bind
+2020-02-24 15:21:25,452 +0900 [WebsocketSelector1] ERROR (UBWebSocketServer.java:501) - onError() Address already in use: bind
+2020-02-24 15:22:05,493 +0900 [main] ERROR (UBWebSocketServer.java:110) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF2752154702442814408.tmp
+2020-02-24 15:23:08,205 +0900 [main] ERROR (UBWebSocketServer.java:103) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF5710996665663954897.tmp
+2020-02-24 15:24:05,457 +0900 [main] ERROR (UBWebSocketServer.java:103) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF8214189299637142959.tmp
+2020-02-24 15:25:14,002 +0900 [main] ERROR (UBWebSocketServer.java:103) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF8660442949041884430.tmp
+2020-02-24 15:27:42,399 +0900 [main] ERROR (UBWebSocketServer.java:103) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF4134178811253986803.tmp
+2020-02-24 15:27:42,405 +0900 [main] ERROR (UDPServer.java:31) - UDPServer::SocketException-Address already in use: Cannot bind
+2020-02-24 15:27:42,416 +0900 [WebsocketSelector1] ERROR (UBWebSocketServer.java:432) - onError() Address already in use: bind
+2020-02-24 15:29:55,286 +0900 [main] ERROR (UBWebSocketServer.java:103) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF5955462723142914339.tmp
+2020-02-24 15:30:41,623 +0900 [main] ERROR (UBWebSocketServer.java:103) - Failed to loadFontList::Unsupported sfnt C:\Users\user\AppData\Local\Temp\+~JF715636187938922101.tmp
+2020-02-24 15:30:41,626 +0900 [main] ERROR (UDPServer.java:31) - UDPServer::SocketException-Address already in use: Cannot bind
+2020-02-24 15:30:41,638 +0900 [WebsocketSelector1] ERROR (UBWebSocketServer.java:432) - onError() Address already in use: bind
+2020-02-24 15:35:48,353 +0900 [main] ERROR (UBWebSocketServer.java:103) - Failed to loadFontList::C:\Users\user\UBIFORM\UBLocalExporter\fonts\combiNumerals.eot (지정된 파일을 찾을 수 없습니다)
+2020-02-24 15:38:57,416 +0900 [main] ERROR (UDPServer.java:31) - UDPServer::SocketException-Address already in use: Cannot bind
+2020-02-24 15:38:57,429 +0900 [WebsocketSelector1] ERROR (UBWebSocketServer.java:432) - onError() Address already in use: bind
+2020-02-24 15:47:18,605 +0900 [WebSocketWorker-15] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:54357: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 15:48:44,438 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:54400: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 15:54:27,733 +0900 [WebSocketWorker-13] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:54471: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 16:18:29,467 +0900 [WebSocketWorker-13] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:54687: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 16:21:11,739 +0900 [WebSocketWorker-10] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:54703: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 16:33:14,434 +0900 [WebSocketWorker-14] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:54824: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 16:34:21,065 +0900 [WebSocketWorker-15] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:54832: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 16:59:39,680 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:55291: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 17:00:08,967 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:55291: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 17:00:11,247 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:55291: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 17:00:13,432 +0900 [WebSocketWorker-13] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:55366: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 17:05:54,104 +0900 [WebSocketWorker-13] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:55410: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 17:07:42,295 +0900 [WebSocketWorker-12] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:55440: Other job is already processed. ConSocketAcceptReady is not true.
+2020-02-24 17:29:56,550 +0900 [WebSocketWorker-14] ERROR (UBWebSocketServer.java:298) - onMessage()/127.0.0.1:55645: Other job is already processed. ConSocketAcceptReady is not true.

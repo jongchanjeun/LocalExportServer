@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="1000">성공</entry> <!-- MSG_COMMON_SUCCESS -->
+	<entry key="1001">실패</entry> <!-- MSG_COMMON_FAILED -->
+
+	<entry key="2001">DB연결에 성공하였습니다.</entry> <!-- MSG_DATABASE_CONNECT_SUCCESS -->
+
+	<entry key="9000">시스템에서 예외가 발생하였습니다. 관리자에게 문의 바랍니다.</entry> <!-- MSG_SYSTEM_EXCEPTION -->
+	<entry key="9001">DB작업 중  예외가 발생하였습니다. 관리자에게 문의 바랍니다.</entry> <!-- MSG_DATABASE_EXCEPTION -->
+	<entry key="9002">아이디 또는 패스워드가 잘못되었습니다.</entry> <!-- MSG_LOGIN_PASSWD_FAIL -->
+	<entry key="9003">아이디 또는 패스워드가 잘못되었습니다.</entry> <!-- MSG_LOGIN_USERID_FAIL -->
+	<entry key="9004">요청한 메소드가 존재하지 않습니다.</entry> <!-- MSG_SYSTEM_METHOD_NOTFOUND -->
+	<entry key="9005">요청한 메소드를 실행하는데 실패하였습니다.</entry> <!-- MSG_SYSTEM_METHOD_INVOKE_FAIL -->
+	<entry key="9006">DB연결 객체를 얻지 못했습니다.</entry> <!-- MSG_DATABASE_CONNECTION_NULL -->
+	<entry key="9007">메소드가 구현되지 않았습니다.</entry> <!-- MSG_SYSTEM_METHOD_UNIMPLEMENTED -->
+	<entry key="9008">에디터에서 퍼블리싱 할 뷰어가 설치된 서버 리스트를 얻지 못했습니다.</entry> <!-- MSG_FAIL_TO_FIND_PUBLISH_SERVER_LIST -->
+	<entry key="9009">요청한 URL값이 비어 있습니다.</entry> <!-- MSG_REQUET_URL_IS_EMPTY -->
+	<entry key="9010">XML 데이터를 얻는데 실패하였습니다.</entry> <!-- MSG_FAILED_TO_GET_XMLDATA -->
+	<entry key="9011">Form 정보 file이 존재하지 않습니다.</entry> <!-- MSG_NOT_EXISTS_FORM_INFO_FILE -->
+	<entry key="9012">주어진 경로가 존재하지 않습니다.</entry> <!-- MSG_NOT_EXISTS_PATH -->
+	<entry key="9013">주어진  템플릿 파일이 존재하지 않습니다.</entry> <!-- MSG_NOT_EXISTS_TEMPLATE_FILE -->
+	<entry key="9014">뷰어의 문서 오픈 로그 파일이 존재하지 않습니다.</entry> <!-- MSG_NOT_EXISTS_VIEWLOG_FILE -->
+	<entry key="9015">라이선스 서버 아이피주소가 유효하지 않습니다.</entry> <!-- MSG_LICENSE_SERVER_IP_INVALID -->
+	<entry key="9016">로그인에 실패하였습니다.</entry> <!-- MSG_LOGIN_FAILED -->
+	<entry key="9017">DB연결 상태를 확인해 보시기 바랍니다.</entry> <!-- MSG_CHECK_YOUR_DB_CONNECTION -->
+	<entry key="9018">폴더를 생성하는데 실패하였습니다. 관리자에게 문의 바랍니다.</entry> <!-- MSG_FAILED_TO_MAKE_FOLDER -->
+	<entry key="9019">파일을 중복하여 생성할 수 없습니다. 관리자에게 문의 바랍니다.</entry> <!-- MSG_ALREADY_FILE_EXISTS -->
+	<entry key="9020">잘못된 접근입니다.</entry> <!-- MSG_WRONG_APPROACH -->
+	<entry key="9021">파일 업로드에 실패하였습니다. 관리자에게 문의 바랍니다.</entry> <!-- MSG_FAILED_TO_UPLOAD -->
+	<entry key="9022">요청한 Dataset 파일이 존재하지 않습니다.</entry> <!-- MSG_NOT_EXISTS_DATASET_FILE -->
+	<entry key="9023">요청한 Erd 파일이 존재하지 않습니다.</entry> <!-- MSG_NOT_EXISTS_ERD_FILE -->
+	<entry key="9024">요청한 SQL 파일이 존재하지 않습니다.</entry> <!-- MSG_NOT_EXISTS_SQL_FILE -->
+	<entry key="9025">요청한 TNS정보 파일이 존재하지 않습니다.</entry> <!-- MSG_NOT_EXISTS_TNS_FILE -->
+	<entry key="9026">주어진 파일을 삭제하는데 실패하였습니다.</entry> <!-- MSG_FAILED_TO_DELETE_FILE -->
+	<entry key="9027">SELECT 질의어가 아닙니다. SELECT 질의어만 유효합니다.</entry> <!-- MSG_IS_NOT_SELECT_QUERY -->
+	<entry key="9028">정의되지 않은 DBMS 유형입니다.</entry> <!-- MSG_UNDEFINED_DBMS_TYPE -->
+	<entry key="9029">조회된 데이터가 없습니다.</entry> <!-- MSG_DATABASE_NO_DATA_FOUND -->
+	<entry key="9030">주어진 명령은 정의되지 않았습니다.</entry> <!-- MSG_DATABASE_UNDEFINED_COMMAND -->
+	<entry key="9031">지원되지 않는 문법입니다.</entry> <!-- MSG_DATABASE_UNSUPPORTED_SYNTAX -->
+	<entry key="9032">클래스를 찾지 못하였습니다.</entry> <!-- MSG_CLASS_NOT_FOUND_EXCEPTION -->
+	<entry key="9033">폼 히스토리 목록을 얻지 못하였습니다.</entry> <!-- MSG_FAIL_TO_FIND_PROJECT_HISTORY_LIST -->
+	<entry key="9034">서비스 수행에 실패했습니다.</entry> <!-- MSG_EXCUTION_SERVICE_FAILED -->
+	<entry key="9035">지정된 파라미터가 정의되지 않았습니다.</entry> <!-- MSG_PARAMETER_NOT_DEFINED -->
+	<entry key="9036">지정된 메소드를 찾지 못했습니다.</entry> <!-- MSG_METHOD_NOT_FOUND -->
+	<entry key="9037">지정된 컨트롤러를 찾지 못했습니다.</entry> <!-- MSG_CONTROLLER_NOT_FOUND -->
+	<entry key="9038">요청한 device 파일이 존재하지 않습니다.</entry> <!-- MSG_NOT_EXISTS_DEVICE_FILE -->
+	<entry key="9039">요청한 license 파일이 존재하지 않습니다.</entry> <!-- MSG_NOT_EXISTS_LICENSE_FILE -->
+	<entry key="9040">문서생성 작업 중 오류가 발생하였습니다. 관리자에게 문의 바랍니다.</entry> <!-- MSG_DOC_GEN_EXCEPTION -->
+	<entry key="9041">비밀번호가 잘못 되었습니다..</entry> <!-- MSG_WRONG_PASSWORD -->
+	<entry key="9042">파라미터가 존재하지 않습니다.</entry> <!-- MSG_PARAMETERS_NOT_EXIT -->
+	<entry key="9043">라이선스 서버 CPU수가 유효하지 않습니다.</entry> <!-- MSG_LICENSE_SERVER_CPU_COUNT_INVALID -->
+	<entry key="9044">라이선스 서버 사용자수가 유효하지 않습니다.</entry> <!-- MSG_LICENSE_SERVER_USER_COUNT_INVALID -->
+	<entry key="9045">라이선스 서버 적용날짜가 유효하지 않습니다.</entry> <!-- MSG_LICENSE_SERVER_DATE_INVALID -->
+	<entry key="9046">허가되지 않은 클라이언트의 접속입니다.</entry> <!-- MSG_INVALIDATE_CLIENT_CONNECTION -->
+	<entry key="9047">라이선스 서버 인스턴스 아이디가 유효하지 않습니다.</entry> <!-- MSG_LICENSE_SERVER_INSTANCE_INVALID -->
+	<entry key="9048">라이선스 서버 사용자 아이디가 유효하지 않습니다.</entry> <!-- MSG_LICENSE_SERVER_ACCOUNT_INVALID -->
+	<entry key="9049">서버 세션이 유효하지 않습니다.</entry> <!-- MSG_SERVER_SESSION_INVALID -->
+	<entry key="9050">브라우저를 Refresh 하거나 다시 로그인하세요.</entry> <!-- MSG_SESSION_INVALID_COMMAND_GUIDE -->
+	
+	<entry key="9051">파일경로가 유효하지 않습니다.</entry> <!-- MSG_INVALID_FILE_PATH -->
+	<entry key="9052">함수에 오류가 있습니다.</entry> <!-- MSG_FUNCTION_ERROR -->
+	<entry key="9053">라이선스 키가 유효하지 않습니다.</entry> <!-- MSG_LICENSE_KEY_ERROR -->
+
+	<entry key="9054">운영서버에서는 에디터를 사용할 수 없습니다.</entry> <!-- MSG_USE_EDIT_METHOD -->
+	
+	<entry key="10001">파라미터 데이터를 전송완료하였습니다.</entry> <!-- MSG_LP_SEND_PARAMS_END -->
+	<entry key="10002">파라미터 데이터 전송을 계속 진행합니다.</entry> <!-- MSG_LP_SEND_PARAMS_CONTINUE -->
+	<entry key="10003">폼파일 내용을 얻는데 성공하였습니다.</entry> <!-- MSG_LP_SUUCESS_GET_FORMFILE_CONTENT -->
+	<entry key="10004">폼파일 내용을 얻는데 실패하였습니다.</entry> <!-- MSG_LP_FAIL_GET_FORMFILE_CONTENT -->
+	<entry key="10005">서버로부터 연결 토큰을 얻는데 실패하였습니다. Response entity 값이 null입니다.</entry> <!-- MSG_LP_FAIL_GET_SERVER_TOKEN -->
+	<entry key="10006">요청된 프린트서비스를 찾을 수 없습니다.</entry> <!-- MSG_LP_NOTFOUND_PRINTSERVICE -->
+	<entry key="10007">프린트 작업이 취소되었습니다.</entry> <!-- MSG_LP_PRINTJOB_CANCEL -->
+	<entry key="10008">프린트 작업이 완료되었습니다.</entry> <!-- MSG_LP_PRINTJOB_COMPLETED -->
+	<entry key="10009">PDF 생성작업이 완료되었습니다.</entry> <!-- MSG_LP_MAKEPDF_COMPLETED -->
+	<entry key="10010">PDF 생성작업이 취소되었습니다.</entry> <!-- MSG_LP_MAKEPDF_CANCELED -->
+	<entry key="10011">출력용 페이지 생성작업을 시작합니다.</entry> <!-- MSG_LP_START_MAKEPRINT -->
+	<entry key="10012">출력용 페이지 생성작업이 완료되었습니다.</entry> <!-- MSG_LP_END_MAKEPRINT -->
+	<entry key="10013">PDF 페이지 생성작업을 시작합니다.</entry> <!-- MSG_LP_START_MAKEPDF -->
+	<entry key="10014">PDF 페이지 생성작업이 완료되었습니다.</entry> <!-- MSG_LP_END_MAKEPDF -->
+	<entry key="10015">프린트 작업을 시작합니다.</entry> <!-- MSG_LP_START_PRINT -->	
+	
+	<entry key="10016">PDF 페이지 통합작업이 완료되었습니다.</entry> <!-- MSG_LP_END_MERGEEPDF -->
+	<entry key="10017">작업진행중에는 다른작업을 요청할 수 없습니다.</entry> <!-- MSG_LP_JOB_ALEADY_ALLOCATED -->
+	<entry key="10018">출력물 미리보기 작업을 시작합니다.</entry> <!-- MSG_LP_PRINT_PREVIEW -->
+	<entry key="10019">출력물 미리보기 작업이 완료되었습니다.</entry> <!-- MSG_LP_PREVIEWJOB_COMPLETE -->
+	<entry key="10020">액셀파일이 생성되었습니다.</entry> <!-- MSG_LP_END_CREATE_EXCEL -->
+	<entry key="10021">액셀파일 생성작업이 완료되었습니다.</entry> <!-- MSG_LP_MAKEEXCEL_COMPLETED -->
+	<entry key="10022">TIFF 이미지파일 생성작업이 완료되었습니다.</entry> <!-- MSG_LP_MAKETIFF_COMPLETED -->
+	<entry key="10023">TIFF 이미지파일 생성작업을 시작합니다.</entry> <!-- MSG_LP_MAKETIFF_START -->
+	<entry key="10024">LocalExporter의 업데이트 버전이 필요합니다.</entry> <!-- MSG_LP_LOCALEXPORTER_REQUIRED_UPDATE -->	
+	<entry key="10025">서버로부터 LocalExporter의 업데이트 URL을 수신하였습니다.</entry> <!-- MSG_LP_GET_UPDATER_URL -->	
+	<entry key="10026">다음과 같은 프로젝트형식은 지원되지 않습니다.</entry> <!-- MSG_LP_FAIL_PROJECT_TYPE -->	
+	<entry key="10027">TIFF 이미지 파일 생성작업이 취소되었습니다.</entry> <!-- MSG_LP_MAKETIFF_CANCELED -->	
+	<entry key="10028">출력물의 총 페이지수를 구하였습니다.</entry> <!-- MSG_LP_PRINTJOB_GET_PAGECOUNT_END -->	
+	<entry key="10029">EXCEL 생성작업이 취소되었습니다.</entry> <!-- MSG_LP_MAKEEXCEL_CANCELED -->
+
+</properties>

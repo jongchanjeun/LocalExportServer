@@ -1,0 +1,2080 @@
+package org.ubstorm.service.parser;
+
+import java.awt.Dimension;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+
+import org.apache.batik.transcoder.TranscoderException;
+import org.apache.batik.transcoder.TranscoderInput;
+import org.apache.batik.transcoder.TranscoderOutput;
+import org.apache.batik.transcoder.image.PNGTranscoder;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.poi.POIXMLDocumentPart;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFClientAnchor;
+import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.hssf.usermodel.HSSFPalette;
+import org.apache.poi.hssf.usermodel.HSSFPatriarch;
+import org.apache.poi.hssf.usermodel.HSSFPicture;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFShape;
+import org.apache.poi.hssf.usermodel.HSSFShapeTypes;
+import org.apache.poi.hssf.usermodel.HSSFSimpleShape;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.openxml4j.opc.PackageRelationship;
+import org.apache.poi.openxml4j.opc.TargetMode;
+import org.apache.poi.openxml4j.util.ZipSecureFile;
+import org.apache.poi.sl.usermodel.ShapeType;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.ClientAnchor;
+import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.Drawing;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.ShapeTypes;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.ss.util.ImageUtils;
+import org.apache.poi.util.Units;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFClientAnchor;
+import org.apache.poi.xssf.usermodel.XSSFDrawing;
+import org.apache.poi.xssf.usermodel.XSSFPicture;
+import org.apache.poi.xssf.usermodel.XSSFShape;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.XMLOutputter;
+import org.openxmlformats.schemas.drawingml.x2006.main.CTTransform2D;
+import org.ubstorm.service.dictionary.ImageDictionary;
+import org.ubstorm.service.dictionary.ImageDictionaryVO;
+import org.ubstorm.service.logger.Log;
+import org.ubstorm.service.parser.formparser.data.GlobalVariableData;
+import org.ubstorm.service.parser.xmlToUbForm.EFontStyle;
+import org.ubstorm.service.parser.xmlToUbForm.EFontWeight;
+import org.ubstorm.service.parser.xmlToUbForm.ETextAlign;
+import org.ubstorm.service.parser.xmlToUbForm.ETextDecoration;
+import org.ubstorm.service.parser.xmlToUbForm.EVerticalAlign;
+import org.ubstorm.service.utils.StringUtil;
+import org.ubstorm.service.utils.ValueConverter;
+import org.ubstorm.service.utils.common;
+
+import com.lowagie.text.BadElementException;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Image;
+import com.oreilly.servlet.Base64Decoder;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+
+import org.apache.batik.transcoder.TranscoderException;
+import org.apache.batik.transcoder.TranscoderInput;
+import org.apache.batik.transcoder.TranscoderOutput;
+import org.apache.batik.transcoder.image.PNGTranscoder;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.poi.POIXMLDocumentPart;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFClientAnchor;
+import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.hssf.usermodel.HSSFPalette;
+import org.apache.poi.hssf.usermodel.HSSFPatriarch;
+import org.apache.poi.hssf.usermodel.HSSFPicture;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFShape;
+import org.apache.poi.hssf.usermodel.HSSFSimpleShape;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.openxml4j.opc.PackageRelationship;
+import org.apache.poi.openxml4j.opc.TargetMode;
+import org.apache.poi.openxml4j.util.ZipSecureFile;
+import org.apache.poi.sl.usermodel.ShapeType;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.ClientAnchor;
+import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.Drawing;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.ss.util.ImageUtils;
+import org.apache.poi.util.Units;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFClientAnchor;
+import org.apache.poi.xssf.usermodel.XSSFDrawing;
+import org.apache.poi.xssf.usermodel.XSSFPicture;
+import org.apache.poi.xssf.usermodel.XSSFShape;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.XMLOutputter;
+import org.openxmlformats.schemas.drawingml.x2006.main.CTTransform2D;
+import org.ubstorm.service.dictionary.ImageDictionary;
+import org.ubstorm.service.dictionary.ImageDictionaryVO;
+import org.ubstorm.service.logger.Log;
+import org.ubstorm.service.parser.formparser.data.GlobalVariableData;
+import org.ubstorm.service.parser.xmlToUbForm.EFontStyle;
+import org.ubstorm.service.parser.xmlToUbForm.EFontWeight;
+import org.ubstorm.service.parser.xmlToUbForm.ETextAlign;
+import org.ubstorm.service.parser.xmlToUbForm.ETextDecoration;
+import org.ubstorm.service.parser.xmlToUbForm.EVerticalAlign;
+import org.ubstorm.service.utils.StringUtil;
+import org.ubstorm.service.utils.ValueConverter;
+import org.ubstorm.service.utils.common;
+
+import com.lowagie.text.BadElementException;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Image;
+import com.oreilly.servlet.Base64Decoder;
+
+public class ubFormToExcel97 extends ubFormToExcelBase {
+
+	/**
+	 * <pre>
+	 * </pre>
+	 * @param pageNo 생성할 페이지 번호.
+	 * */
+	@Override
+	public Workbook toExcelOnePage(int pageNo/*, int itemArLen */) throws Exception {
+		
+		createBackgroundImage();
+		
+		ArrayList<HashMap<String,Object>> xySet = null;
+		
+//		makePositionArray2( makeYArray(pageNo), pageNo);
+		ArrayList<Integer> _yAr = makeYArray(pageNo);
+		makePositionArray2( _yAr, pageNo);
+		
+		int yArLen = xySetArray.size();
+		rowStartIDX = rowIdx;
+		
+		drawBackgroundImage( rowIdx,  xArrayGlobal,  _yAr );
+
+		for (int yIdx = 0; yIdx < yArLen; yIdx++) {
+			
+//			row = (HSSFRow) (( sheet.getRow(rowIdx+yIdx) == null )? sheet.createRow(rowIdx+yIdx) : sheet.getRow(rowIdx+yIdx));
+			if( sheet.getRow(rowIdx+yIdx) == null  )
+			{
+				row =  (HSSFRow) sheet.createRow(rowIdx+yIdx);
+				row.setHeightInPoints(0);
+			}
+			else
+			{
+				row =  (HSSFRow) sheet.getRow(rowIdx+yIdx);
+			}
+			
+			
+			xySet = xySetArray.get(yIdx);
+			int xArLen = xySet.size();
+			Date start = new Date();
+			for (int xIdx = 0; xIdx < xArLen; xIdx++) {
+				HashMap<String, Object> xyArItem = xySet.get(xIdx);
+
+				// type = item, none, D
+				if( xyArItem == null || xyArItem.get("type") == null ) continue;
+				
+				// type이 none인 아이템
+				if( ValueConverter.getString(xyArItem.get("type")).equals("none") ){ 
+					
+					// 가장 첫 row에서만 셀 너비를 지정한다. --> 아이템의 너비와 충돌하는 경우 방지.
+					if( rowIdx == 0 && yIdx == 0 ){
+						// Width
+						if( xyArItem.containsKey("width") ){
+							int celW = PixelUtil.pixel2WidthUnits( toNum(xyArItem.get("width")) );
+							sheet.setColumnWidth( xIdx, celW );
+						}
+					}
+					// Height
+					if( xyArItem.containsKey("height") ){
+						
+//						float cHeight = (float) Math.min(toNum(xyArItem.get("height"))*0.75, 409);
+						float cHeight = convertRatioHeight(xyArItem.get("height"), false, null);
+						
+						row.setHeightInPoints(cHeight);
+					}
+					// Border : 셀이 쪼개진 경우 NONE에 border, bgcolor 값이 들어있을 수 있음 : getBorderTypeIdx
+					if( xyArItem.containsKey("uBorder") ){
+						HSSFCell _colCell = (HSSFCell) row.createCell(xIdx);
+
+						CellStyle cStyle = null;
+						String styleId = getStyleId(xyArItem);
+						cStyle = styleHSSFTables.get(styleId);
+						 _colCell.setCellStyle(cStyle);
+					}
+					else if( xIdx == xArLen -1 && yIdx == yArLen -1 )
+					{
+						Cell _colCell = row.createCell(xIdx);
+						_colCell.setCellValue(" ");
+					}
+				}
+				
+				// 아이템 추가하기.
+				else if( xyArItem.get("type").toString().equals("item") ){
+					
+					if(   xyArItem.get("visible") != null && xyArItem.get("visible").equals("")==false && !ValueConverter.getBoolean(xyArItem.get("visible")) ) continue;
+					
+					// 추가될 셀의 Y에는 rowIdx 를 더해주고,
+					int yPos = toNum( xyArItem.get("y") ) + rowIdx;
+					int xPos = toNum( xyArItem.get("x") );
+					// 저장된 배열에서 해당 좌표의 아이템을 받아올때는 빼주기.
+					HashMap<String, Object> _item = xySetArray.get(yPos-rowIdx).get(xPos);
+						
+					try {
+						
+						if( isValid(_item.get("colSpan")) && isValid(_item.get("rowSpan")) ){
+							
+							// end row no
+							int rspan = Math.max( toNum(_item.get("rowSpan"))+yPos, yPos+1 );
+							// end column no
+							int cspan = Math.max( toNum(_item.get("colSpan"))+xPos, xPos+1 );
+	
+							CellRangeAddress region = new CellRangeAddress( yPos, rspan-1, xPos, cspan-1 );
+							
+							// 라벨 아이템인 경우
+							CellStyle cStyle = null;
+	//						if( _item.get("className").toString().indexOf("Label") != -1 ){
+							if( !isValid(_item.get("className")) ) continue;
+							String itemClassName = ValueConverter.getString(_item.get("className"));
+							String itemClassType = ValueConverter.getString(_item.get("type"));
+							
+							boolean isSVGTxt = itemClassName.equals("UBSVGRichText");
+							if( isSVGTxt ){
+								_item = convertSvgTextItem(_item);
+							}
+							
+							if( !itemClassName.equals("UBTextSignature") && (itemClassName.contains("Label") || itemClassName.equals("UBTable") || itemClassName.equals("UBApproval") 
+									|| itemClassName.equals("UBRadioBorder") || itemClassName.equals("UBCheckBox") 
+									|| itemClassName.equals("UBComboBox") || itemClassName.equals("UBDateFiled") 
+									|| itemClassName.contains("Text") || isSVGTxt ) ){
+								
+								if(itemClassType.equals("specialFontLabel"))
+								{
+									if( itemClassName.contains("Label") )
+									{
+										String _imgData = URLDecoder.decode(ValueConverter.getString(_item.get("text")),"UTF-8");
+										_item.put("src", _imgData);
+										addImageBase64(_item, region);
+									}
+									continue;
+								}
+								
+//								if( rspan - yPos > 1 ||  cspan - xPos > 1 ) sheet.addMergedRegion( region );		//@최명진 테스트 필요 3.15버전 이상에서 셀이 깨져보이는 현상이 발생 병합된 셀이 아니면 region을 생성하지 않게
+								
+								if( itemClassName.equals("UBRadioBorder") || itemClassName.equals("UBCheckBox") ){
+									_item = setEformItemAttr(_item);
+								}
+								// 콤보, 데이트필드의 경우 테두리를 그리지 않도록 한다. - 이장환이사님의견 반영.
+								else if( itemClassName.equals("UBComboBox") || itemClassName.equals("UBDateFiled") ){
+									_item.remove("uBorder");
+									_item.put("borderWidth", "0" );
+									_item.put("isCell", "false" );
+									_item.put("borderType", "none" );
+									_item.put("borderSide", "[]" );
+								}
+								
+								String cellValue = ValueConverter.getString(_item.get("text"));
+								
+								// 줄바꿈 처리
+								cellValue = cellValue.replace("\\n", "\n").replaceAll("\\r", "\r");
+
+								//item FontSize변경을 위해 여기서 한번 Size를 체크하여 변경시킨다. 
+								_item  = convertFontSize(_item, cellValue);
+								// ITEM의 rowHeight변경되는 부분 담기
+								checkFitRowHeight( _item, yPos, rspan-1, cellValue);
+								
+								String styleId = getStyleId(_item);
+								cStyle = styleHSSFTables.get(styleId);
+								
+								// merged cell 영역에 해당 스타일을 모두지정.
+								for (int _r = yPos; _r < rspan; _r++) {
+									
+									Row _row = sheet.getRow(_r);
+									if( _row == null )
+									{
+										_row = sheet.createRow(_r);
+										_row.setHeightInPoints(0);
+									}
+									
+									for (int _c = xPos; _c < cspan; _c++) {
+										
+										Cell _colCell = _row.createCell(_c);
+										
+										if(_r == yPos && _c == xPos ) _colCell = setFormatType(_item, _colCell, cellValue);
+//										_colCell = setFormatType(_item, _colCell, cellValue);
+										
+//										if( isValid(cellValue) ){
+//											_colCell.setCellValue(cellValue);
+//										}
+										
+										_colCell.setCellStyle(cStyle);
+	
+										// merge 영역에 none, D의 Height 를 세팅한다.
+										HashMap<String, Object> tmp = xySetArray.get(_r-rowIdx).get(_c);
+										if( tmp != null && !tmp.get("type").toString().equals("item")){
+//											float cHeight = (float) (toNum(tmp.get("height"))*0.75);
+											float cHeight = convertRatioHeight(tmp.get("height"), true, _item );
+											
+											_row.setHeightInPoints( cHeight );
+										}
+										
+										// style 에서 rotation 되는 경우 정렬이 깨져서 다시 정렬 해줘야함.
+										//textAlign
+										if( _item.containsKey("distributed") && _item.get("distributed") != null && _item.get("distributed").toString().equals("true")) 
+										{
+											//균등분할 옵션처리 필요 ( 대동아 요청사항 )
+											cStyle.setAlignment(HorizontalAlignment.DISTRIBUTED);
+											
+										}
+										else if( _item.containsKey("textAlign") && isValid(_item.get("textAlign")) )
+										{
+											switch ( ETextAlign.valueOf(ValueConverter.getString(_item.get("textAlign")))) {
+												case left: cStyle.setAlignment(CellStyle.ALIGN_LEFT); break;
+												case center: cStyle.setAlignment(CellStyle.ALIGN_CENTER); break;
+												case right: cStyle.setAlignment(CellStyle.ALIGN_RIGHT); break;
+											}
+										}
+										
+										//verticalAlign
+										if( _item.containsKey("verticalAlign") && isValid(_item.get("verticalAlign")) ){
+											switch ( EVerticalAlign.valueOf(ValueConverter.getString(_item.get("verticalAlign")))) {
+												case top: cStyle.setVerticalAlignment(CellStyle.VERTICAL_TOP); break;
+												case middle: cStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER); break;
+												case bottom: cStyle.setVerticalAlignment(CellStyle.VERTICAL_BOTTOM); break;
+											}
+										}
+										// vAlign 속성이 빠져있어서 임시로 처리해놓음 추후 제거!
+										else{
+											cStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+										}
+									}
+								}
+								
+								// repeatValue처리를 위하여 Map에 담기
+								if(  useRepeatValue && _item.containsKey("datatext"))
+								{
+									if(mRepeatValueCheckMap==null) mRepeatValueCheckMap = new HashMap<String, ArrayList<CellRangeAddress>>();
+									if( mLastRepeatValueStringMap == null ) mLastRepeatValueStringMap = new HashMap<String, String>();
+									
+									String _itemID = String.valueOf(xPos);
+									String _repeatValueText = _item.get("datatext").toString();
+									ArrayList<CellRangeAddress> _cellRangeAr;
+									CellRangeAddress _cellRange;
+									if( mRepeatValueCheckMap.containsKey( _itemID ) == false )
+									{
+										_cellRangeAr = new ArrayList<CellRangeAddress>();
+										_cellRangeAr.add(region);
+										
+										mRepeatValueCheckMap.put( _itemID, _cellRangeAr);
+									}
+									else
+									{
+										if( mLastRepeatValueStringMap.get(_itemID).equals(_repeatValueText) == false )
+										{
+											_cellRangeAr = mRepeatValueCheckMap.get(_itemID);
+											_cellRangeAr.add(region);
+										}
+										else
+										{
+											_cellRangeAr =  (ArrayList<CellRangeAddress>) mRepeatValueCheckMap.get(_itemID);
+											_cellRange = _cellRangeAr.get(_cellRangeAr.size()-1);
+											_cellRange.setLastColumn(region.getLastColumn());
+											_cellRange.setLastRow(region.getLastRow());
+										}
+									}
+									
+									mLastRepeatValueStringMap.put( _itemID, _repeatValueText);
+									
+								}
+								else
+								{
+									if( rspan - yPos > 1 ||  cspan - xPos > 1 )
+									{
+										if(mCellRangeAddressList == null ) mCellRangeAddressList = new ArrayList<CellRangeAddress>();
+										mCellRangeAddressList.add(region);
+									}
+//									if( rspan - yPos > 1 ||  cspan - xPos > 1 ) sheet.addMergedRegion( region );		//@최명진 테스트 필요 3.15버전 이상에서 셀이 깨져보이는 현상이 발생 병합된 셀이 아니면 region을 생성하지 않게
+								}
+								
+							}
+							// UBGraphicsLine
+							else if(  itemClassName.contains("Chart") == false && itemClassName.contains("Line") ){
+								addLine(_item, region);
+							}
+							// UBGraphicsCircle
+							else if( itemClassName.contains("Circle") ){
+								addShape(_item, region, "circle");
+							}
+							// UBGraphicsRectangle || UBGraphicsGradiantRectangle
+							else if( itemClassName.contains("Rectangle") ){
+								addShape(_item, region, "rect");
+							}
+							else if( itemClassName.contains("UBClipArtContainer") ){
+								String _src = CreateClipImage(_item);
+								_item.put("src", _src);
+								addImageBase64(_item, region);
+							}
+							//else if( itemClassName.contains("UBSVGArea") )
+							else if( itemClassName.contains("UBSVGArea") || itemClassName.contains("UBQRCode"))	
+							{
+								if( itemClassName.contains("UBQRCode") )
+								{
+									String _svgData = ValueConverter.getString(_item.get("src"));
+									_item.put("data", _svgData.substring(4));
+								}
+								String _src = CreateSVGAreaImage( _item );
+								_item.put("src", _src);
+//								_item.put("src", URLDecoder.decode( _item.get("src").toString() , "UTF-8"));
+								addImageBase64(_item, region);
+							}
+							// 나머지 아이템들은 이미지로 추가.
+							else{
+								if( _item.get("src") != null ){
+									addImage(_item, region, xArrayGlobal,  _yAr );
+								}
+							}
+						}
+
+					} catch (Exception e) {
+						e.printStackTrace();
+						log.error(getClass().getName() + "::toExcelOnePage::" + "xIdx : " + xIdx + ", yIdx : " + yIdx + " item parsing Error!\t"+_item.get("className")+"-"+_item.get("id"));
+					}
+				}// add item end
+			}// x For
+		}// y For
+		/*
+		
+		// 이미지만 따로 뽑아서 추가하는 경우....
+		
+		for (HashMap<String, Object> imgItem : mImgItemList) {
+			if( imgItem.get("src") != null ){
+				String itemY = String.valueOf(imgItem.get("y"));
+				String itemX = String.valueOf(imgItem.get("x"));
+				
+				if( itemY.equals("null") || itemY.equals("") || itemX.equals("null") || itemX.equals("") ) continue;
+				
+				int yPos = Integer.parseInt(itemY) + rowIdx;
+				int xPos = Integer.parseInt(itemX);
+				int rspan = toNum(imgItem.get("rowSpan"))+yPos;
+				int cspan = toNum(imgItem.get("colSpan"))+xPos;
+
+				CellRangeAddress region = new CellRangeAddress( yPos, rspan-1, xPos, cspan-1 );
+				
+				addImage(imgItem, region);
+			}
+		}
+		
+		end = new Date();
+		*/
+		
+		rowIdx+=yArLen;
+		
+		if( isExcelOption.equals("BAND") == false ) mergedCellList();
+		
+		return wb;
+	}
+	
+
+	/**
+	 * 이미지 타입 아이템 생성.
+	 * @param _curMap item정보를 담고있는 HashMap
+	 * @param region 이미지가 추가될 영역. merge 된.
+	 * @throws URISyntaxException 
+	 * */
+	@Override
+	protected void addImage( HashMap<String, Object> _curMap, CellRangeAddress region , ArrayList<Integer> _xAr, ArrayList<Integer> _yAr) throws URISyntaxException{
+		
+		 if( !mExcelIncludeImage && _curMap.containsKey("className") &&  _curMap.get("className").equals("UBImage") )
+		 {
+			 return;
+		 }
+
+		 
+		String _imageUrl = ValueConverter.getString(_curMap.get("src"));
+		if( _imageUrl.equals("") || _imageUrl.equals("null") ){
+			log.error(getClass().getName()+"::addImage::"+">>>>>>>> Item's src property is not exist.");
+			return;
+		}
+		//byte[] bAr = common.getBytesRemoteImageFile(_imageUrl);
+		byte[] bAr = common.getBytesLocalImageFile(_imageUrl);		
+		if(bAr != null)
+		{			
+			int imgId = wb.addPicture(bAr, Workbook.PICTURE_TYPE_PNG);
+			
+			/* Create the drawing container */
+			Drawing drawing = sheet.createDrawingPatriarch();
+	        /* Create an anchor point */
+			CreationHelper helper = wb.getCreationHelper();
+			ClientAnchor my_anchor = helper.createClientAnchor();
+	
+			/*
+			 * Define top left corner, and we can resize picture suitable from
+			 * there
+			 */
+			my_anchor.setCol1(region.getFirstColumn());
+			my_anchor.setRow1(region.getFirstRow());
+			my_anchor.setCol2(region.getLastColumn());
+			my_anchor.setRow2(region.getLastRow());
+			
+			// 아이템 사이즈 정보로 이미지 사이즈 지정. Dimension 이용. 이 경우 resize 메서드를 호출하면 안된다.
+			String itemW = String.valueOf(_curMap.get("width"));
+			String itemH = String.valueOf(_curMap.get("height"));
+			
+			boolean _isOriginSize = false;
+			if( _curMap.containsKey("isOriginalSize") &&  !_curMap.get("isOriginalSize").equals(""))
+			{
+				_isOriginSize = Boolean.valueOf(_curMap.get("isOriginalSize").toString());
+			}
+			int dx = 0;
+			int dy = 0;
+			
+			float widthRate = 1;
+			float heightRate = 1;
+			if(_isOriginSize){		
+				Image _image = null;
+				if(bAr != null){
+					try {
+						_image = Image.getInstance(bAr);
+						HashMap<String,Float> _orignSize = common.getOriginSize(itemW,itemH,_image);
+						widthRate = Float.valueOf( _orignSize.get("widthRate"));
+						heightRate = Float.valueOf(_orignSize.get("heightRate"));					
+						//itemW = String.valueOf( _orignSize.get("width") );
+						//itemH = String.valueOf( _orignSize.get("height"));
+						dx = Integer.valueOf(Math.round(_orignSize.get("marginX")));
+						dy = Integer.valueOf(Math.round(_orignSize.get("marginY")));
+					} catch (BadElementException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (MalformedURLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}	
+				}
+			}
+			
+			
+			
+			float _rotation = Float.valueOf(_curMap.get("rotate").toString());
+			
+			System.out.println("ubFormToExcel95::image itemW=" + itemW + ", itemH=" + itemH);
+			
+			// 시작 = 0
+			my_anchor.setDx1(dx);
+			my_anchor.setDy1(dy);
+			
+			// pixel 값을 emu로 변환하기 위해 상수를 곱해준다.
+			if( !itemW.equals("null") && !itemW.equals("")){
+//				my_anchor.setDx2(toNum(itemW) * org.apache.poi.util.Units.EMU_PER_PIXEL);
+				my_anchor.setDx2(toNum(itemW) * 20);
+				//my_anchor.setDx2(toNum(itemW));
+			}
+			if( !itemH.equals("null") && !itemH.equals("")){
+//				my_anchor.setDy2(toNum(itemH) * org.apache.poi.util.Units.EMU_PER_PIXEL);
+				my_anchor.setDy2(toNum(itemH) * 15);
+				//my_anchor.setDy2(toNum(itemH));
+			}
+			/* Invoke createPicture and pass the anchor point and ID */
+			HSSFPicture my_picture = (HSSFPicture) drawing.createPicture(my_anchor, imgId);
+			
+			String _fileDownloadUrl = ValueConverter.getString(_curMap.get("fileDownloadUrl"));
+			if( _fileDownloadUrl != null && !(_fileDownloadUrl.equals("")) && !_fileDownloadUrl.equals("null")){
+				PackageRelationship rel = ((POIXMLDocumentPart) drawing).getPackagePart().addRelationship(new URI(_fileDownloadUrl),
+			            TargetMode.EXTERNAL, "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink");
+				((POIXMLDocumentPart) drawing).addRelation(rel.getId(),new POIXMLDocumentPart());
+//				CTHyperlink hLinkClick =my_picture.getCTPicture().getNvPicPr().getCNvPr().addNewHlinkClick();
+//				hLinkClick.setId(rel.getId());
+			}
+			
+	        try
+	        {
+//	        	Call resize method, which resizes the image 
+//	        	my_picture.resize(widthRate,heightRate);
+	        	
+	            if( _rotation != 0  )
+				{
+					my_picture.setRotationDegree( Float.valueOf( _rotation ).shortValue() );
+					Dimension imgSize = my_picture.getImageDimension();
+					
+					Dimension size = ImageUtils.getDimensionFromAnchor(my_picture);
+		        	double actualWidth = 0;
+		            double actualHeight = 0;
+		            
+		            actualWidth = size.getWidth() / org.apache.poi.util.Units.EMU_PER_PIXEL;
+		            actualHeight = size.getHeight() / org.apache.poi.util.Units.EMU_PER_PIXEL;
+		            
+		            if( Math.abs(_rotation) != 0 )
+		            {
+		            	actualWidth =  actualWidth / imgSize.getWidth();
+		            	actualHeight =  actualHeight / imgSize.getHeight();
+		            	
+		            	double _sc = actualWidth;
+		            	if( actualWidth > actualHeight ) _sc = actualHeight;
+		            	
+//		            	my_picture.resize();
+//		            	my_picture.resize( actualWidth, actualHeight );
+		            }
+		            
+				}
+	        	
+	        }
+	        catch(Exception exp)
+	        {
+	        	exp.printStackTrace();
+	        }
+		}
+	}
+	
+	
+	
+	/**
+	 * 이미지 타입 아이템 생성.
+	 * @param _curMap item정보를 담고있는 HashMap
+	 * @param region 이미지가 추가될 영역. merge 된.
+	 * @throws URISyntaxException 
+	 * @throws UnsupportedEncodingException 
+	 * */
+	@Override
+	protected void addImageBase64( HashMap<String, Object> _curMap, CellRangeAddress region ) throws URISyntaxException, UnsupportedEncodingException{
+		
+		String _imageUrl = ValueConverter.getString(_curMap.get("src"));
+		if( _imageUrl.equals("") || _imageUrl.equals("null") ){
+			log.error(getClass().getName()+"::addImage::"+">>>>>>>> Item's src property is not exist.");
+			return;
+		}
+		//byte[] bAr = common.getBytesRemoteImageFile(_imageUrl);
+		byte[] bAr = Base64.decodeBase64(_curMap.get("src").toString().getBytes("UTF-8"));
+		if(bAr != null)
+		{
+			int imgId = wb.addPicture(bAr, Workbook.PICTURE_TYPE_PNG);
+			
+			/* Create the drawing container */
+			Drawing drawing = (Drawing) sheet.createDrawingPatriarch();
+	        /* Create an anchor point */
+			CreationHelper helper = wb.getCreationHelper();
+			ClientAnchor my_anchor = helper.createClientAnchor();
+			
+			my_anchor.setCol1(region.getFirstColumn());
+			my_anchor.setRow1(region.getFirstRow());
+			my_anchor.setCol2(region.getLastColumn());
+			my_anchor.setRow2(region.getLastRow());
+			
+			// 아이템 사이즈 정보로 이미지 사이즈 지정. Dimension 이용. 이 경우 resize 메서드를 호출하면 안된다.
+			String itemW = String.valueOf(_curMap.get("width"));
+			String itemH = String.valueOf(_curMap.get("height"));
+			
+			// 시작 = 0
+			my_anchor.setDx1(0);
+			my_anchor.setDy1(0);
+			
+			// pixel 값을 emu로 변환하기 위해 상수를 곱해준다.
+			if( !itemW.equals("null") && !itemW.equals("")){
+				//my_anchor.setDx2(toNum(itemW) * XSSFShape.EMU_PER_PIXEL);
+				my_anchor.setDx2(toNum(itemW));
+			}
+			if( !itemH.equals("null") && !itemH.equals("")){
+				//my_anchor.setDy2(toNum(itemH) * XSSFShape.EMU_PER_PIXEL);
+				my_anchor.setDy2(toNum(itemH));
+			}
+			/* Invoke createPicture and pass the anchor point and ID */
+			HSSFPicture my_picture = (HSSFPicture) drawing.createPicture(my_anchor, imgId);
+			
+			
+			
+			String _fileDownloadUrl = ValueConverter.getString(_curMap.get("fileDownloadUrl"));
+			if( _fileDownloadUrl != null && !(_fileDownloadUrl.equals("")) ){
+				//java.lang.ClassCastException: org.apache.poi.hssf.usermodel.HSSFPatriarch cannot be cast to org.apache.poi.POIXMLDocumentPart
+				PackageRelationship rel = ((POIXMLDocumentPart) drawing).getPackagePart().addRelationship(new URI(_fileDownloadUrl),
+			            TargetMode.EXTERNAL, "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink");
+				((POIXMLDocumentPart) drawing).addRelation(rel.getId(),new POIXMLDocumentPart());
+				//CTHyperlink hLinkClick =my_picture.getCTPicture().getNvPicPr().getCNvPr().addNewHlinkClick();
+				//hLinkClick.setId(rel.getId());
+			}
+			
+		}
+	}
+	
+	/**
+	 * 라인 아이템 생성.
+	*/
+	@Override
+	protected void addLine( HashMap<String, Object> _item, CellRangeAddress region ) {
+		HSSFPatriarch patriarch= (HSSFPatriarch) sheet.createDrawingPatriarch();
+
+		int x1 = toNum(_item.get("x1"));
+		int x2 = toNum(_item.get("x2"));
+		int y1 = toNum(_item.get("y1"));
+		int y2 = toNum(_item.get("y2"));
+		
+		int itemW = Math.abs(x2 - x1);
+		int itemH = Math.abs(y2 - y1);
+		
+		HSSFClientAnchor anchor = new HSSFClientAnchor(
+												0, //dx1
+												0, //dy1
+												itemW, //dx2
+												itemH, //dy2
+												(short) region.getFirstColumn(), //col1
+												region.getFirstRow(), //row1
+												(short) region.getLastColumn(), //col2
+												region.getLastRow()); //row2
+	
+		HSSFSimpleShape regionShape = patriarch.createSimpleShape(anchor);
+		// Thick
+		regionShape.setLineWidth(ValueConverter.getInteger(_item.get("thickness"))*HSSFShape.LINEWIDTH_ONE_PT);
+		// Color
+		java.awt.Color _c = new java.awt.Color(ValueConverter.getInteger(_item.get("lineColorInt")));
+		regionShape.setLineStyleColor(_c.getRed(), _c.getGreen(), _c.getBlue());
+		
+		
+		regionShape.setShapeType(HSSFSimpleShape.OBJECT_TYPE_LINE);
+			
+		if( (x1 > x2 && y1 < y2) || ( y1 > y2 && x2 > x1 )  )
+		{
+//			regionShape.setShapeType(ShapeTypes.LINE_INV);
+			regionShape.setFlipHorizontal(true);
+			
+		}
+		else
+		{
+//			regionShape.setShapeType(ShapeTypes.LINE);
+			regionShape.setFlipHorizontal(false);
+		}
+		
+		//	regionShape.setShapeType(HSSFSimpleShape.OBJECT_TYPE_LINE);
+			
+	}
+	
+	/**
+	 * 타입에 따라 원/사각형 아이템 생성.
+	 * @param type circle : 원 / rect:사각형
+	 */
+	@Override
+	protected void addShape( HashMap<String, Object> _item, CellRangeAddress region, String type ) {
+		HSSFPatriarch patriarch= (HSSFPatriarch) sheet.createDrawingPatriarch();
+		
+		//int itemW = toNum(_item.get("width"))* XSSFShape.EMU_PER_PIXEL;
+		//int itemH = toNum(_item.get("height"))* XSSFShape.EMU_PER_PIXEL;
+		int itemW = toNum(_item.get("width"));
+		int itemH = toNum(_item.get("height"));
+		
+//		int _fCol = Integer.parseInt(_item.get("x").toString());
+//		int _fRow = Integer.parseInt(_item.get("y").toString());
+//		int _lCol = Integer.parseInt(_item.get("colSpan").toString()) -1;
+//		int _lRow = Integer.parseInt(_item.get("rowSpan").toString()) -1;
+//		
+//		if( _fCol == -1 || _fRow == -1 || _lCol == -1 || _lRow == -1 ) return;
+		
+		HSSFClientAnchor anchor = new HSSFClientAnchor(
+				0, //dx1
+				0, //dy1
+				itemW, //dx2
+				itemH, //dy2
+				(short) region.getFirstColumn(), //col1
+				region.getFirstRow(), //row1
+				(short) region.getLastColumn(), //col2
+				region.getLastRow()); //row2
+		
+		HSSFSimpleShape regionShape = patriarch.createSimpleShape(anchor);
+	
+		// Color
+		if( String.valueOf(_item.get("className")).equals("UBGraphicsGradiantRectangle")){
+			// cell fill gradient sample : http://thinktibits.blogspot.com.au/2014/09/apache-poi-excel-gradient-fill-example.html
+			// gradiant 인 경우는 첫번째 색으로 채운다. size=2
+			String[] bgColor = jsonArrayToArray(ValueConverter.getString(_item.get("contentBackgroundColorsInt")));
+			java.awt.Color _c = new java.awt.Color(ValueConverter.getInteger(bgColor[0]));
+			regionShape.setFillColor(_c.getRed(), _c.getGreen(), _c.getBlue());
+		}
+		else{
+			java.awt.Color _c = new java.awt.Color(ValueConverter.getInteger(_item.get("contentBackgroundColorInt")));
+			regionShape.setFillColor(_c.getRed(), _c.getGreen(), _c.getBlue());
+		}
+		
+		// border
+		int borderThickness = toNum(_item.get("borderThickness"));
+		if( borderThickness > 0 ){
+			// Thick
+			regionShape.setLineWidth(borderThickness*HSSFShape.LINEWIDTH_ONE_PT);
+			// Color
+			java.awt.Color _c = new java.awt.Color(ValueConverter.getInteger(_item.get("borderColorInt")));
+			regionShape.setLineStyleColor(_c.getRed(), _c.getGreen(), _c.getBlue());
+		}
+		
+		// type
+		int shapeType = HSSFSimpleShape.OBJECT_TYPE_OVAL;
+		if( type.equals("circle") ){
+			shapeType = HSSFSimpleShape.OBJECT_TYPE_OVAL;
+		}
+		else if( type.equals("rect") ){
+			shapeType = HSSFSimpleShape.OBJECT_TYPE_RECTANGLE;
+		}
+		regionShape.setShapeType(shapeType);
+		
+	}
+	
+	
+	@Override
+	protected String CreateClipImage( HashMap<String, Object> _item ) throws DocumentException, MalformedURLException, IOException, TranscoderException
+	{
+		String _clipName = ValueConverter.getString(_item.get("clipArtData"));
+		
+		if( !_clipName.substring(_clipName.length() - 3, _clipName.length()).toUpperCase().equals("SVG"))
+		{
+			_clipName = _clipName+".svg";
+		}
+		
+		//Step -1: We read the input SVG document into Transcoder Input
+        //We use Java NIO for this purpose
+		String _urlStr = Log.basePath + "UView5/assets/images/svg/" + _clipName;
+		
+		java.io.File _file = new java.io.File(_urlStr);
+		
+        TranscoderInput input_svg_image = new TranscoderInput( _file.toURL().toString() );    
+        
+        OutputStream png_ostream = new ByteArrayOutputStream();
+        TranscoderOutput output_png_image = new TranscoderOutput(png_ostream);        
+        
+        PNGTranscoder my_converter = new PNGTranscoder();
+        my_converter.transcode(input_svg_image, output_png_image);
+        		
+        png_ostream.flush();
+//        png_ostream.close(); 	
+        
+        String base64 = new String(Base64.encodeBase64(((ByteArrayOutputStream) png_ostream).toByteArray()));
+        return base64;
+        
+	}
+	
+	/***
+	 * Excel 저장시 SVG 차트 이미지 저장
+	 * @param _item
+	 * @return
+	 * @throws DocumentException
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 * @throws TranscoderException
+	 */
+	@Override
+	protected String CreateSVGAreaImage( HashMap<String, Object> _item ) throws DocumentException, MalformedURLException, IOException, TranscoderException
+	{
+		float  oWidth = 64f;
+		float  oHeight = 64f;
+		
+		//width
+		if( _item.get("width") != null ){
+			oWidth = Double.valueOf(_item.get("width").toString()).floatValue();
+	        oWidth = _item.get("width").toString().indexOf(".") != -1 ? oWidth : oWidth + 0.6f;
+		}
+		//height
+		if( _item.get("height") != null ){
+			oHeight = Double.valueOf(_item.get("height").toString()).floatValue();
+	        oHeight = _item.get("height").toString().indexOf(".") != -1 ? oHeight : oHeight + 0.6f;
+		}
+        
+		log.debug(getClass().getName()+"::CreateSVGAreaImage::" + "oWidth=" + oWidth + ",oHeight=" + oHeight);
+		
+		//String _svgTag = URLDecoder.decode( _item.get("data").toString() );
+		String _svgTag = URLDecoder.decode( ValueConverter.getString(_item.get("data")) , "UTF-8");
+		_svgTag = _svgTag.replaceAll("%20", " ");
+		
+		String itemClassName = (String) _item.get("className");
+		if( itemClassName != null && itemClassName.contains("UBQRCode") )
+		{
+			_svgTag = Base64Decoder.decode(_svgTag);
+			log.debug(getClass().getName()+"::CreateSVGAreaImage:UBQRCode:svg=[" + _svgTag + "]");
+		}
+		else
+		{
+//			_svgTag = StringUtil.convertSvgStyle(_svgTag);
+			_svgTag = StringUtil.convertSvgStyleXPath(_svgTag);
+		}
+		
+		InputStream _is = new ByteArrayInputStream( _svgTag.getBytes("UTF-8") );
+		
+        TranscoderInput input_svg_image = new TranscoderInput( _is ); 
+
+        OutputStream png_ostream = new ByteArrayOutputStream();
+        TranscoderOutput output_png_image = new TranscoderOutput(png_ostream);        
+        
+        PNGTranscoder my_converter = new PNGTranscoder();
+        my_converter.addTranscodingHint(PNGTranscoder.KEY_WIDTH, oWidth);
+        my_converter.addTranscodingHint(PNGTranscoder.KEY_HEIGHT, oHeight);
+        
+        my_converter.transcode(input_svg_image, output_png_image);
+        
+        png_ostream.flush();
+        
+        String base64 = new String(Base64.encodeBase64(((ByteArrayOutputStream) png_ostream).toByteArray()));
+        return base64;
+        
+	}
+	
+	/***
+	 * Excel 저장시 SVG 차트 이미지 저장
+	 * @param _item
+	 * @return
+	 * @throws DocumentException
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 * @throws TranscoderException
+	 * @throws JDOMException 
+	 */
+	@Override
+	protected String CreateSVGLabelImage( HashMap<String, Object> _item ) throws DocumentException, MalformedURLException, IOException, TranscoderException, JDOMException
+	{
+		float _ow = ValueConverter.getFloat(_item.get("width"));
+		float _oh = ValueConverter.getFloat(_item.get("height"));
+		
+		//String _svgTag = URLDecoder.decode( _item.get("data").toString() );
+		String _svgTag = URLDecoder.decode( ValueConverter.getString(_item.get("data")) , "UTF-8");
+		_svgTag = _svgTag.replaceAll("%20", " ");
+		
+		// viewBox 를 이용해서 사이즈 변경 //		
+		int _startIdx = _svgTag.indexOf("<svg");
+		if( _startIdx == -1 ) 
+		{
+			_svgTag = "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\"  width=\"" + _ow + "\" height=\"" + _oh + "\" viewBox=\"0 0 " + _ow + " " + _oh + "\" zoomAndPan=\"disable\" >" + _svgTag;
+			_svgTag = "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\"?>" + _svgTag;
+			_svgTag = _svgTag + "</svg>";
+		}
+		
+		_startIdx = _svgTag.indexOf("<svg");
+		if( _startIdx == -1 ) {
+			return null; // svg tag 가 아니면 그리지 않는다..
+		}
+		
+		//_dataStr = _dataStr.replaceAll("fill=\"rgba(255,255,255,0)\"", "fill=\"rgb(255,255,255)\" fill-opacity=\"0\"");
+		// DOM에 SVG 문서를 넣고, 위와 같이 속상값을 찾아서 변경을 해주도록 한다.
+		InputStream stream = new ByteArrayInputStream(_svgTag.getBytes("UTF-8"));
+		org.jdom2.Document doc = (org.jdom2.Document) new SAXBuilder().build(stream);
+
+		org.jdom2.Element xmlRoot = (org.jdom2.Element) doc.getRootElement(); //<svg>
+   	 	List<org.jdom2.Element> firstItemList = xmlRoot.getChildren();
+   	 	for (org.jdom2.Element firstItem : firstItemList) 
+	   	{
+	   		List<org.jdom2.Element> secondItemList = firstItem.getChildren(); // Item
+	   		for (org.jdom2.Element secondItem : secondItemList) {
+				 String secondItemFillAttr = secondItem.getAttributeValue("fill");
+				 if( secondItemFillAttr != null && secondItemFillAttr.contains("rgba") ){
+					 int beginIndex = secondItemFillAttr.indexOf("(");
+					 int endIndex = secondItemFillAttr.indexOf(")");
+					 String fillAttRgbaValue = secondItemFillAttr.substring(beginIndex+1, endIndex);
+					 String[] arrfillAttRgbaValues = fillAttRgbaValue.split(",");
+					 
+					 secondItem.setAttribute("fill", "rgb(" + arrfillAttRgbaValues[0] + "," + arrfillAttRgbaValues[1] + "," + arrfillAttRgbaValues[2] + ")");
+					 secondItem.setAttribute("fill-opacity", arrfillAttRgbaValues[3]);
+				 }
+			}
+		}
+   	 	_svgTag = new XMLOutputter().outputString(doc);   	 	
+   
+		log.debug(getClass().getName()+"::"+"ubFormToExcel97::"+"SVGTAG=[" + _svgTag + "]");				
+		
+		InputStream _is = new ByteArrayInputStream( _svgTag.getBytes("UTF-8") );
+		
+        TranscoderInput input_svg_image = new TranscoderInput( _is ); 
+
+        OutputStream png_ostream = new ByteArrayOutputStream();
+        TranscoderOutput output_png_image = new TranscoderOutput(png_ostream);        
+        
+        PNGTranscoder my_converter = new PNGTranscoder();
+        my_converter.transcode(input_svg_image, output_png_image);
+        
+        png_ostream.flush();
+        
+        String base64 = new String(Base64.encodeBase64(((ByteArrayOutputStream) png_ostream).toByteArray()));
+        return base64;
+        
+	}
+	
+	
+	/**
+	 * 아이템에서 셀스타일 지정에 필요한 속성을 String 으로 뽑은  HashMap 을 임의의 Key 값과 매칭시켜 저장한다.
+	 * */
+	private HashMap<String,HashMap<String, String>> styleStringTables = new HashMap<String,HashMap<String,String>>();
+	/**
+	 * styleStringTables 의 key 와 동일한 key로 HSSFCellStyle 이 매핑될 테이블.
+	 * */
+	private HashMap<String,HSSFCellStyle> styleHSSFTables = new HashMap<String,HSSFCellStyle>();
+	
+	public boolean clearStyleTable()
+	{
+		styleHSSFTables.clear();
+		styleStringTables.clear();
+		return true;
+	}
+	/**
+	 * 스타일 아이디 값 지정을 위한 상수. <b>"style"+styleCnt</b> 로 아이디 생성.
+	 * */
+	private int styleCnt = 0;
+	
+	/**
+	 * 비교대상아이템의 Style String Map 을 만들어 styleStringTables 에 저장된 스타일이 있는지 찾는다. 없으면 아이템 정보를 바탕으로 새 스타일을 만든다.
+	 * @param _item 비교할 아이템
+	 * @return String 찾은, 혹은 새로 생성한 스타일 ID
+	 * */
+	private String getStyleId( HashMap<String, Object> _item ) throws Exception {
+		
+		int styleTableLen = styleStringTables.size();
+		
+		// 현재 아이템의 스타일 값을 모아서 스타일이 존재하는지 찾는다.
+		HashMap<String, String> itemStyles = setItemStringStyle(_item);
+		if( styleTableLen != 0 ){
+			for (String key : styleStringTables.keySet()) {
+				if( itemStyles.equals(styleStringTables.get(key))){
+					// 존재하면 해당 key 값을 리턴.
+					return key;
+				}
+			}
+		}
+		
+		String styleId = "style"+styleCnt;
+		createStyleToTable(styleId, itemStyles);
+		styleStringTables.put(styleId, itemStyles);
+		styleCnt++;
+		return styleId;
+	}
+
+	/**
+	 * 아이템의 스타일 생성에 필요한 정보를 뽑아 새로운 해시맵을 만든다. 
+	 * @param _item 스타일 체크할 아이템
+	 * @param styleType [ font, cell ] 
+	 * @return HashMap<String, String> String 정보가 담긴 배열.
+	 * */
+	private HashMap<String, String> setItemStringStyle( HashMap<String, Object> _item ) {
+		HashMap<String, String> itemStyles = new HashMap<String, String>();
+
+		if( _item.containsKey("backgroundColorInt") && isValid(_item.get("backgroundColorInt")) ) itemStyles.put("backgroundColorInt", ValueConverter.getString(_item.get("backgroundColorInt")));
+		
+		if( _item.containsKey("isCell") && isValid(_item.get("isCell")) ) itemStyles.put("isCell", ValueConverter.getString(_item.get("isCell")));
+		
+		boolean isCell = ValueConverter.getBoolean(_item.get("isCell"));
+		if( isCell ){
+			if( _item.containsKey("borderColorsInt") && isValid(_item.get("borderColorsInt")) ) itemStyles.put("borderColorsInt", ValueConverter.getString(_item.get("borderColorsInt")));
+			if( _item.containsKey("borderWidths") && isValid(_item.get("borderWidths")) ) itemStyles.put("borderWidths", ValueConverter.getString(_item.get("borderWidths")));
+			if( _item.containsKey("borderTypes") && isValid(_item.get("borderTypes")) ) itemStyles.put("borderTypes", ValueConverter.getString(_item.get("borderTypes")));
+		}
+		else{
+			if( _item.containsKey("borderWidth") && isValid(_item.get("borderWidth")) ) itemStyles.put("borderWidth", ValueConverter.getString(_item.get("borderWidth")));
+			if( _item.containsKey("borderColorInt") && isValid(_item.get("borderColorInt")) ) itemStyles.put("borderColorInt", ValueConverter.getString(_item.get("borderColorInt")));
+			if( _item.containsKey("borderType") && isValid(_item.get("borderType")) ) itemStyles.put("borderType", ValueConverter.getString(_item.get("borderType")));
+		}
+		
+		if( _item.containsKey("uBorder")){
+			if( _item.containsKey("uBorder") && isValid(_item.get("uBorder")) ) itemStyles.put("uBorder", ValueConverter.getString(_item.get("uBorder")));
+			HashMap<String, HashMap<String, Object>> _uBorder = (HashMap<String, HashMap<String, Object>>) _item.get("uBorder");
+			if( _uBorder.containsKey("T") ){
+				HashMap<String, Object> _T = _uBorder.get("T");
+				for (String key : _T.keySet()) {
+					itemStyles.put("uBorder_T_"+key, ValueConverter.getString(_T.get(key)));
+				}
+			}
+			if( _uBorder.containsKey("L") ){
+				HashMap<String, Object> _L = _uBorder.get("L");
+				for (String key : _L.keySet()) {
+					itemStyles.put("uBorder_L_"+key, ValueConverter.getString(_L.get(key)));
+				}
+			}
+			if( _uBorder.containsKey("R") ){
+				HashMap<String, Object> _R = _uBorder.get("R");
+				for (String key : _R.keySet()) {
+					itemStyles.put("uBorder_R_"+key, ValueConverter.getString(_R.get(key)));
+				}
+			}
+			if( _uBorder.containsKey("B") ){
+				HashMap<String, Object> _B = _uBorder.get("B");
+				for (String key : _B.keySet()) {
+					itemStyles.put("uBorder_B_"+key, ValueConverter.getString(_B.get(key)));
+				}
+			}
+		}
+		if( _item.containsKey("borderSide") && isValid(_item.get("borderSide")) ) itemStyles.put("borderSide", ValueConverter.getString(_item.get("borderSide")));
+		if( _item.containsKey("textRotate") && isValid(_item.get("textRotate")) ) itemStyles.put("textRotate", ValueConverter.getString(_item.get("textRotate")));
+		if( _item.containsKey("textAlign") && isValid(_item.get("textAlign")) ) itemStyles.put("textAlign", ValueConverter.getString(_item.get("textAlign")));
+		if( _item.containsKey("verticalAlign") && isValid(_item.get("verticalAlign")) ) itemStyles.put("verticalAlign", ValueConverter.getString(_item.get("verticalAlign")));
+		
+		// Font 생성여부를 판단하기 위해 text가 있으면, 임의의 값인 true 를 스타일 맵에 추가한다.(스타일만 체크할 것이므로 value 를 넣으면 안됨.) 
+		// createStyleToTable 에서 containsKey("text") 만 체크해서 판단함.
+		if( _item.containsKey("text") && isValid(_item.get("text")) ) itemStyles.put("text", "true");
+		if( _item.containsKey("textDecoration") && isValid(_item.get("textDecoration")) ) itemStyles.put("textDecoration", ValueConverter.getString(_item.get("textDecoration")));
+		if( _item.containsKey("fontStyle") && isValid(_item.get("fontStyle")) ) itemStyles.put("fontStyle", ValueConverter.getString(_item.get("fontStyle")));
+		if( _item.containsKey("fontSize") && isValid(_item.get("fontSize")) ) itemStyles.put("fontSize", ValueConverter.getString(_item.get("fontSize")));
+		if( _item.containsKey("fontWeight") && isValid(_item.get("fontWeight")) ) itemStyles.put("fontWeight", ValueConverter.getString(_item.get("fontWeight")));
+		if( _item.containsKey("fontFamily") && isValid(_item.get("fontFamily")) ) itemStyles.put("fontFamily", ValueConverter.getString(_item.get("fontFamily")));
+		if( _item.containsKey("fontColorInt") && isValid(_item.get("fontColorInt")) ) itemStyles.put("fontColorInt", ValueConverter.getString(_item.get("fontColorInt")));
+		
+		// 포맷터 정보 담기
+		if(_item.containsKey("EX_FORMATTER") && isValid(_item.get("EX_FORMATTER")) )
+		{
+			itemStyles.put("EX_FORMATTER", ValueConverter.getString( _item.get("EX_FORMATTER") ) );
+			itemStyles.put("EX_FORMAT_DATA_STR", ValueConverter.getString( _item.get("EX_FORMAT_DATA_STR") ) );
+		}
+
+		
+		if( _item.containsKey("distributed") && _item.get("distributed") != null )
+		{
+			itemStyles.put("distributed", ValueConverter.getString( _item.get("distributed") ) );
+		}
+		
+		return itemStyles;
+	}
+	
+	/**
+	 * 실제 XSSFCellStyle 을 생성하는 함수. styleXSSFTables에 저장됨.
+	 * @param id CellStyle 구분자. [style0, style1 ... ]
+	 * @param itemStyles setItemStringStyle에서 만들어진 문자열로 이루어진 스타일 정보.
+	 * */
+	private void createStyleToTable( String id, HashMap<String, String> itemStyles ) throws Exception {
+		HSSFCellStyle cStyle = (HSSFCellStyle) wb.createCellStyle();
+		//backgroundColor
+		if( itemStyles.containsKey("backgroundColorInt") && isValid(itemStyles.get("backgroundColorInt"))){
+			cStyle.setFillForegroundColor(changeColorToHssColor(wb, ValueConverter.getInteger(itemStyles.get("backgroundColorInt"))) );
+			cStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
+		}
+		
+		cStyle.setWrapText(true);
+		
+		// uBorder
+		if( itemStyles.containsKey("uBorder") ){
+			if(itemStyles.containsKey("uBorder_T_borderType")) cStyle.setBorderTop(ValueConverter.getShort(itemStyles.get("uBorder_T_borderType")));
+			if(itemStyles.containsKey("uBorder_T_borderColorInt")) cStyle.setTopBorderColor(changeColorToHssColor(wb, ValueConverter.getInteger(itemStyles.get("uBorder_T_borderColorInt"))));
+			
+			if(itemStyles.containsKey("uBorder_L_borderType")) cStyle.setBorderLeft(ValueConverter.getShort(itemStyles.get("uBorder_L_borderType")));
+			if(itemStyles.containsKey("uBorder_L_borderColorInt")) cStyle.setLeftBorderColor(changeColorToHssColor(wb, ValueConverter.getInteger(itemStyles.get("uBorder_L_borderColorInt"))));
+			
+			if(itemStyles.containsKey("uBorder_R_borderType")) cStyle.setBorderRight(ValueConverter.getShort(itemStyles.get("uBorder_R_borderType")));
+			if(itemStyles.containsKey("uBorder_R_borderColorInt")) cStyle.setRightBorderColor(changeColorToHssColor(wb, ValueConverter.getInteger(itemStyles.get("uBorder_R_borderColorInt"))));
+			
+			if(itemStyles.containsKey("uBorder_B_borderType")) cStyle.setBorderBottom(Short.valueOf(itemStyles.get("uBorder_B_borderType")));
+			if(itemStyles.containsKey("uBorder_B_borderColorInt")) cStyle.setBottomBorderColor(changeColorToHssColor(wb, ValueConverter.getInteger(itemStyles.get("uBorder_B_borderColorInt"))));
+		}
+		//borderSide [top, bottom, left, right] : 순서는 바뀔 수 있음.
+		else if( itemStyles.containsKey("borderSide") ){
+			// borderSide 정보에 따라 테두리 지정.
+			String _b = ValueConverter.getString(itemStyles.get("borderSide"));
+			if( !isValid(_b) || _b.equals("[]")){
+				// side 없음!
+			}
+			else{
+				// 1.  테이블 속성인지 아닌지에 따라 arProps 에 정보를 저장한다.
+				
+				// 테두리 관련 속성 정보를 저장할 맵.
+				HashMap<String, Object> arProps = new HashMap<String, Object>();
+
+				boolean isCell = ValueConverter.getBoolean(itemStyles.get("isCell"));
+				
+				if( isCell ){
+					// isCell = true. 속성이 배열.
+					
+					//borderColorsInt
+					if( itemStyles.containsKey("borderColorsInt") ){
+						arProps.put("borderColor", arrayToString( jsonArrayToArray(itemStyles.get("borderColorsInt")) ));
+					}
+					//borderTypes
+					String bdWidthAr = itemStyles.get("borderWidths");
+					String bdTypeAr = itemStyles.get("borderTypes");
+					if( isValid(bdTypeAr) ){
+						//borderWidths
+						String [] bWidths = (isValid(bdWidthAr))? jsonArrayToArray(bdWidthAr) : null;
+						String [] bTypes = jsonArrayToArray( bdTypeAr );
+						if( bTypes != null ){
+							String typeArrayString = "";
+							int len = bTypes.length;
+							for (int i = 0; i < len; i++) {
+								if( bWidths != null && bWidths.length > i ){
+									typeArrayString += getBorderTypeIdx( bTypes[i], ValueConverter.getInteger(bWidths[i]));
+								}
+								else{
+									typeArrayString += getBorderTypeIdx( bTypes[i], 1);
+								}
+								if( i != len-1 ){
+									typeArrayString += ",";
+								}
+							}
+							arProps.put("borderType", typeArrayString);
+						}
+					}
+				}
+				else{
+					// isCell = false. 속성이 단일 값.
+					int borderWidth = (isValid(itemStyles.get("borderWidth")))? ValueConverter.getInteger(itemStyles.get("borderWidth")):1;
+					//borderColor
+					if( isValid(itemStyles.get("borderColorInt")) ){
+						arProps.put("borderColor", itemStyles.get("borderColorInt"));
+					}
+					// borderType
+					if( isValid(itemStyles.get("borderType")) ){
+						arProps.put("borderType", getBorderTypeIdx(itemStyles.get("borderType"), borderWidth));
+					}
+				}
+				
+				ArrayList<String> bStrList = new ArrayList<String>(Arrays.asList(jsonArrayToArray(_b)));
+				if( bStrList == null || bStrList.size() == 0 ){
+					// border None!
+				}
+				else{
+					// borderSide 배열을 기준으로 boderWidth, borderColor, borderType 스타일 적용.
+					int size = bStrList.size();
+					for (int i = 0; i < size; i++) {
+						int bColor = 0;
+						short bType = 0;
+						
+						// 속성이 여러 개(테이블) 인지 한 개 인지에 따라 값 지정. 
+						if( isCell ){
+							// isCell = true : 속성값을 ,로 쪼개서, borderSide 인덱스와 일치하는 값을 대입.
+							if( arProps.containsKey("borderColor") && isValid(arProps.get("borderColor")) ){
+								String[] bColorStrAr = ValueConverter.getString(arProps.get("borderColor")).trim().split(",");
+								if( bColorStrAr.length > i ) bColor = Integer.valueOf(bColorStrAr[i]);
+							}
+							if( arProps.containsKey("borderType") && isValid(arProps.get("borderType")) ){
+								String[] bTypeStr = ValueConverter.getString(arProps.get("borderType")).trim().split(",");
+								if( bTypeStr.length > i ) bType = Short.valueOf(bTypeStr[i]);
+							}
+						}
+						else{
+							// isCell = false : 값을 그대로 받아옴.
+							if( arProps.containsKey("borderColor") && isValid(arProps.get("borderColor")) ) bColor = ValueConverter.getInteger(arProps.get("borderColor"));
+							if( arProps.containsKey("borderType") && isValid(arProps.get("borderType")) ) bType = ValueConverter.getShort(arProps.get("borderType"));
+						}
+						
+						// boderSide의 값에 따라 스타일 지정.
+						if( bStrList.get(i).equals("left") ){
+							cStyle.setLeftBorderColor(changeColorToHssColor(wb, bColor));
+							cStyle.setBorderLeft(bType);
+						}
+						else if( bStrList.get(i).equals("right") ){
+							cStyle.setRightBorderColor(changeColorToHssColor(wb, bColor));
+							cStyle.setBorderRight(bType);
+						}
+						else if( bStrList.get(i).equals("top") ){
+							cStyle.setTopBorderColor(changeColorToHssColor(wb, bColor));
+							cStyle.setBorderTop(bType);
+						}
+						else if( bStrList.get(i).equals("bottom") ){
+							cStyle.setBottomBorderColor(changeColorToHssColor(wb, bColor));
+							cStyle.setBorderBottom(bType);
+						}
+						
+					}// End boderSide For
+				}
+			}
+		}// end borderSide
+
+		//textRotate
+		if( itemStyles.containsKey("textRotate") && isValid(itemStyles.get("textRotate")) ){
+			// -90 ~ 90
+			short rotation = 0;
+			switch (ValueConverter.getShort(itemStyles.get("textRotate"))) {
+			case 0: rotation = 0; break;
+			case 45: rotation = 120; break;
+			case 90: rotation = 180; break;
+			case 180: rotation = 0; break; // 180 은 지원안됨.
+			case 270: rotation = 90; break;
+			}
+			cStyle.setRotation(rotation);
+		}
+		
+		
+		
+		
+		// 폰트가 많이 생성되면 속도가 저하됨. 아이템에 텍스트가 있을때만 생성하도록 한다.
+		if( itemStyles.containsKey("text") ){
+			HSSFFont font = (HSSFFont) wb.createFont();
+			//textDecoration
+			if( isValid(itemStyles.get("textDecoration")) ){
+				switch (ETextDecoration.valueOf(itemStyles.get("textDecoration"))) {
+				case none: font.setUnderline(Font.U_NONE); break;
+				case normal: font.setUnderline(Font.U_NONE); break;
+				case underline: font.setUnderline(Font.U_SINGLE); break;
+				}
+			}
+			//fontStyle
+			if( isValid(itemStyles.get("fontStyle")) ){
+				switch (EFontStyle.valueOf(itemStyles.get("fontStyle"))) {
+				case italic: font.setItalic(true); break;
+				case normal: font.setItalic(false); break;
+				}
+			}
+			//fontSize
+			if( isValid(itemStyles.get("fontSize")) ){
+//				font.setFontHeightInPoints( (short)(toNum(fSize)*0.75) );
+//				font.setFontHeight((short) toPoint(itemStyles.get("fontSize")));
+				font.setFontHeightInPoints((short) toPoint(itemStyles.get("fontSize")));
+			}
+			//fontWeight
+			if( isValid(itemStyles.get("fontWeight")) ){
+				switch (EFontWeight.valueOf(itemStyles.get("fontWeight"))) {
+				case normal: font.setBold(false); break;
+				case bold: font.setBold(true); break;
+				}
+			}
+			//fontFamily
+			if( isValid(itemStyles.get("fontFamily")) ){
+				font.setFontName( URLDecoder.decode(itemStyles.get("fontFamily"), "UTF-8") );
+			}
+			//fontColor
+			if( isValid(itemStyles.get("fontColorInt")) ){
+				font.setColor(changeColorToHssColor(wb, ValueConverter.getInteger(itemStyles.get("fontColorInt"))));
+			}
+
+			cStyle.setFont(font);
+		}
+
+		// 아이템의 Formatter 속성 추가
+		if( itemStyles.containsKey("EX_FORMATTER") )
+		{
+			makeCellFormatter( itemStyles.get("EX_FORMATTER"), itemStyles.get("EX_FORMAT_DATA_STR"), cStyle );
+		}
+
+		
+		styleHSSFTables.put(id, cStyle);
+		
+	}
+	
+	/** 
+	 * 라벨 아이템 Cell의 스타일을 지정한다.
+	 * @param c : 대상 셀. org.apache.poi.ss.usermodel.Cell
+	 * @param x : column index
+	 * @param y : row index
+	 * @throws UnsupportedEncodingException 
+	 * */
+	private Cell setLabelCell( Cell c, HashMap<String, Object> _item ) throws Exception{
+
+		XSSFCellStyle cStyle = (XSSFCellStyle) c.getCellStyle();
+		c.setCellType(Cell.CELL_TYPE_STRING);
+		
+		//backgroundColor
+		if( _item.containsKey("backgroundColorInt") && isValid(_item.get("backgroundColorInt")) ){
+			cStyle.setFillForegroundColor( changeColorToHssColor(wb, ValueConverter.getInteger(_item.get("backgroundColorInt"))) );
+			cStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
+		}
+		
+		boolean isCell = ValueConverter.getBoolean(_item.get("isCell"));
+		
+		// 배열로 들어오는 경우가 있는 속성들의 맵.
+		HashMap<String, Object> arProps = new HashMap<String, Object>();
+		if( isCell ){
+			// isCell = true. 속성이 배열.
+			
+			//borderColorsInt
+			String bdColorAr = String.valueOf(_item.get("borderColorsInt"));
+			if( !bdColorAr.equals("null") && !bdColorAr.equals("")  ){
+				arProps.put("borderColor", arrayToString( jsonArrayToArray(bdColorAr) ));
+			}
+			//borderTypes
+			String bdWidthAr = String.valueOf(_item.get("borderWidths"));
+			String bdTypeAr = String.valueOf(_item.get("borderTypes"));
+			if( !bdTypeAr.equals("null") && !bdTypeAr.equals("") ){
+				//borderWidths
+				String [] bWidths = (bdWidthAr.equals("null") || bdWidthAr.equals(""))? null : jsonArrayToArray(bdWidthAr);
+				String [] bTypes = jsonArrayToArray( bdTypeAr );
+				if( bTypes != null ){
+					String typeArrayString = "";
+					int len = bTypes.length;
+					for (int i = 0; i < len; i++) {
+						if( bWidths != null && bWidths.length > i ){
+							typeArrayString += getBorderTypeIdx( bTypes[i], Integer.valueOf(bWidths[i]));
+						}
+						else{
+							typeArrayString += getBorderTypeIdx( bTypes[i], 1);
+						}
+						if( i != len-1 ){
+							typeArrayString += ",";
+						}
+					}
+					arProps.put("borderType", typeArrayString);
+				}
+			}
+		}
+		else{
+			// isCell = false. 속성이 단일 값.
+			//borderWidth
+			String bdWidth = String.valueOf(_item.get("borderWidth"));
+			int borderWidth = (bdWidth.equals("null") || bdWidth.equals(""))? 1 : Integer.valueOf(bdWidth);
+			//borderColor
+			String bdColor = String.valueOf(_item.get("borderColorInt"));
+			if( !bdColor.equals("null") && !bdColor.equals("") ){
+				arProps.put("borderColor", bdColor);
+			}
+			// borderType
+			String bdType = String.valueOf(_item.get("borderType"));
+			if( !bdType.equals("null") && !bdType.equals("") ){
+				arProps.put("borderType", getBorderTypeIdx(bdType, borderWidth));
+			}
+		}
+		
+		if( _item.containsKey("uBorder") ){
+
+			 HashMap<String, HashMap<String, Object>> _uBorder =  (HashMap<String, HashMap<String, Object>>)_item.get("uBorder") ;
+			 HashMap<String, Object> borderProp = null;
+			 int bColor = 0;
+			 short bType = 0;
+			 if( _uBorder.containsKey("L") )
+			 {
+				borderProp = _uBorder.get("L");
+				bColor = Integer.valueOf(String.valueOf(borderProp.get("borderColorInt")));
+				cStyle.setLeftBorderColor(changeColorToHssColor(wb, bColor));
+				bType = Short.valueOf(String.valueOf(borderProp.get("borderType")));
+				cStyle.setBorderLeft(bType);
+			 }
+			 if( _uBorder.containsKey("R") )
+			 {
+				borderProp = _uBorder.get("R");
+				bColor = Integer.valueOf(String.valueOf(borderProp.get("borderColorInt")));
+				cStyle.setRightBorderColor(changeColorToHssColor(wb, bColor));
+				bType = Short.valueOf(String.valueOf(borderProp.get("borderType")));
+				cStyle.setBorderRight(bType);
+			 }
+			 if( _uBorder.containsKey("T") )
+			 {
+				borderProp = _uBorder.get("T");
+				bColor = Integer.valueOf(String.valueOf(borderProp.get("borderColorInt")));
+				cStyle.setTopBorderColor(changeColorToHssColor(wb, bColor));
+				bType = Short.valueOf(String.valueOf(borderProp.get("borderType")));
+				cStyle.setBorderTop(bType);
+			 }
+			 if( _uBorder.containsKey("B") )
+			 {
+				borderProp = _uBorder.get("B");
+				bColor = Integer.valueOf(String.valueOf(borderProp.get("borderColorInt")));
+				cStyle.setBottomBorderColor(changeColorToHssColor(wb, bColor));
+				bType = Short.valueOf(String.valueOf(borderProp.get("borderType")));
+				cStyle.setBorderBottom(bType);
+			 }
+		}
+		//borderSide [top, bottom, left, right] : 순서는 바뀔 수 있음.
+		else if( _item.get("borderSide") != null ){
+			String _b = _item.get("borderSide").toString().replaceAll(" ", "");
+//			//앞뒤 괄호를 제거하고, 쉼표로 구분하여 배열 생성.
+			if(_b.equals("[]") || _b.equals("")){
+				// side 없음!
+			}
+			else if( _b.charAt(0) == '[' && _b.charAt(_b.length()-1) == ']'){
+//				String[] bStr = (_b.length()==2)? new String[1]: _b.substring(1, _b.length()-1).split(",");
+				ArrayList<String> bStrList = new ArrayList<String>(Arrays.asList(jsonArrayToArray(_b)));
+				
+				if( bStrList.size() == 0 ){
+					// border None!
+				}
+				else{
+					// borderSide 배열을 기준으로 boderWidth, borderColor, borderType 지정.
+					int size = bStrList.size();
+					for (int i = 0; i < size; i++) {
+						int bColor = 0;
+						short bType = 0;
+						
+						// 속성이 여러 개 인지 한 개 인지에 따라 값 지정. 
+						if( isCell ){
+							// isCell = true : 속성값을 ,로 쪼개서, borderSide 인덱스와 일치하는 값을 대입.
+							if( arProps.containsKey("borderColor") && isValid(arProps.get("borderColor")) ){
+								String[] bColorStrAr = ValueConverter.getString(arProps.get("borderColor")).trim().split(",");
+								if( bColorStrAr.length > i ) 
+									bColor = ValueConverter.getInteger(bColorStrAr[i]);
+							}
+							if( arProps.containsKey("borderType") && isValid(arProps.get("borderType")) ){
+								String[] bTypeStr = ValueConverter.getString(arProps.get("borderType")).trim().split(",");
+								if( bTypeStr.length > i ) 
+									bType = ValueConverter.getShort(bTypeStr[i]);
+							}
+						}
+						else{
+							// isCell = false : 값을 그대로 받아옴.
+							if( arProps.containsKey("borderColor") && isValid(arProps.get("borderColor")) ) 
+								bColor = ValueConverter.getInteger(arProps.get("borderColor"));
+							
+							if( arProps.containsKey("borderType") && isValid(arProps.get("borderType")) ) 
+								bType = ValueConverter.getShort(arProps.get("borderType"));
+						}
+						
+						// boderSide의 값에 따라 스타일 지정.
+						if( bStrList.get(i).equals("left") ){
+							cStyle.setLeftBorderColor(changeColorToHssColor(wb, bColor));
+							cStyle.setBorderLeft(bType);
+						}
+						else if( bStrList.get(i).equals("right") ){
+							cStyle.setRightBorderColor(changeColorToHssColor(wb, bColor));
+							cStyle.setBorderRight(bType);
+						}
+						else if( bStrList.get(i).equals("top") ){
+							cStyle.setTopBorderColor(changeColorToHssColor(wb, bColor));
+							cStyle.setBorderTop(bType);
+						}
+						else if( bStrList.get(i).equals("bottom") ){
+							cStyle.setBottomBorderColor(changeColorToHssColor(wb, bColor));
+							cStyle.setBorderBottom(bType);
+						}
+						
+					}// End boderSide For
+				}
+			}
+		}// end borderSide
+		
+		// Text 
+		if( _item.containsKey("text") && isValid(_item.get("text"))){
+			String itemTxt = URLDecoder.decode(ValueConverter.getString(_item.get("text")), "UTF-8");
+			c.setCellValue(itemTxt);
+
+			//textRotate
+			if( _item.containsKey("textRotate") && isValid(_item.get("textRotate")) ){
+				// -90 ~ 90
+				short rotation = 0;
+				switch (ValueConverter.getShort(_item.get("textRotate"))) {
+				case 0: rotation = 0; break;
+				case 45: rotation = 120; break;
+				case 90: rotation = 180; break;
+				case 180: rotation = 0; break; // 180 은 지원안됨.
+				case 270: rotation = 90; break;
+				}
+				cStyle.setRotation(rotation);
+			}
+			
+			/*
+			// cell 줄바꿈 설정. -- 셀 너비보다 텍스트가 큰 경우도 줄바꿈이 되어야함. --> 무조건 true 로
+			if( itemTxt.indexOf("\n") != -1 ) cStyle.setWrapText(true);
+			else cStyle.setWrapText(false);
+			*/
+			cStyle.setWrapText(true);
+			
+			HSSFFont font = null;
+			//textDecoration
+			if( _item.containsKey("textDecoration") && isValid(_item.containsKey("textDecoration")) ){
+				if( font == null ) font = (HSSFFont) wb.createFont();
+				switch (ETextDecoration.valueOf(ValueConverter.getString(_item.get("textDecoration")))) {
+				case none: font.setUnderline(Font.U_NONE); break;
+				case normal: font.setUnderline(Font.U_NONE); break;
+				case underline: font.setUnderline(Font.U_SINGLE); break;
+				}
+			}
+			//fontStyle
+			if( _item.containsKey("fontStyle") && isValid(_item.get("fontStyle")) ){
+				if( font == null ) font = (HSSFFont) wb.createFont();
+				switch (EFontStyle.valueOf(ValueConverter.getString(_item.get("fontStyle")))) {
+				case italic: font.setItalic(true); break;
+				case normal: font.setItalic(false); break;
+				}
+			}
+			//fontSize
+			if( _item.containsKey("fontSize") && isValid(_item.get("fontSize")) ){
+				if( font == null ) font = (HSSFFont) wb.createFont();
+//				font.setFontHeightInPoints( (short)toPoint(_item.get("fontSize")) );
+				font.setFontHeight( (short) toPoint(_item.get("fontSize")) );
+			}
+			//fontWeight
+			if( _item.containsKey("fontWeight") && isValid(_item.get("fontWeight")) ){
+				if( font == null ) font = (HSSFFont) wb.createFont();
+				String fWeight = String.valueOf(_item.get("fontWeight"));
+				switch (EFontWeight.valueOf(fWeight)) {
+				case normal: font.setBold(false); break;
+				case bold: font.setBold(true); break;
+				}
+			}
+			//fontFamily
+			if( _item.containsKey("fontFamily") && isValid(_item.get("fontFamily")) ){
+				String fname = ValueConverter.getString(_item.get("fontFamily"));
+				if( font == null ) font = (HSSFFont) wb.createFont();
+				fname = URLDecoder.decode(fname, "UTF-8");
+				font.setFontName( fname );
+			}
+			//fontColor
+			if( _item.containsKey("fontColorInt") && isValid(_item.get("fontColorInt")) ){
+				if( font == null ) font = (HSSFFont) wb.createFont();
+				font.setColor(changeColorToHssColor(wb, ValueConverter.getInteger(_item.get("fontColorInt"))));
+			}
+			
+			if( font != null ){
+				cStyle.setFont(font);
+			}
+			
+		} // Text End
+
+		// ------ 텍스트가 회전하면 정렬이 깨지는 현상 방지.
+		//textAlign
+		String tAlign = String.valueOf(_item.get("textAlign"));
+		if( isValid(tAlign) ){
+			switch ( ETextAlign.valueOf(tAlign)) {
+			case left: cStyle.setAlignment(CellStyle.ALIGN_LEFT); break;
+			case center: cStyle.setAlignment(CellStyle.ALIGN_CENTER); break;
+			case right: cStyle.setAlignment(CellStyle.ALIGN_RIGHT); break;
+			}
+		}
+		
+		//verticalAlign
+		String vAlign = String.valueOf(_item.get("verticalAlign"));
+		if( isValid(vAlign) ){
+			switch ( EVerticalAlign.valueOf(vAlign)) {
+			case top: cStyle.setVerticalAlignment(CellStyle.VERTICAL_TOP); break;
+			case middle: cStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER); break;
+			case bottom: cStyle.setVerticalAlignment(CellStyle.VERTICAL_BOTTOM); break;
+			}
+		}
+		// vAlign 속성이 빠져있어서 임시로 처리해놓음 추후 제거!
+		else{
+			cStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+		}
+		
+		//width
+		int cWidth = -1;
+		//height
+		float cHeight = -1;
+		// merge 영역에 width, height 값을 가진 아이템이 있으면, 세팅한다.
+		HashMap<String, Object> tmp = xySetArray.get(c.getRowIndex()-rowIdx).get(c.getColumnIndex());
+		if( tmp != null ){
+			cWidth = toNum(tmp.get("width"));
+			cHeight = toNum(tmp.get("height"));
+		}
+		else{
+			cWidth = toNum(_item.get("width"));
+			cHeight = toNum(_item.get("height"));
+		}
+		
+		
+		if( cWidth != -1){
+			cWidth = PixelUtil.pixel2WidthUnits(cWidth);
+			sheet.setColumnWidth( c.getColumnIndex(), cWidth );
+		}
+		
+		if( cHeight != -1){
+			//The maximum row height for an individual row is 409 points. (1 point equals approximately 1/72 inch)
+			cHeight = (float) Math.min(cHeight*0.75, 409);
+			c.getRow().setHeightInPoints( cHeight );
+		}
+		
+//		c.setCellStyle(cStyle);
+		
+		return c;
+	}
+	
+
+	/**
+	 * Int color to RGB byte array. (ubFormToPdf 참고함.)
+	 * @return byteArray[3] = { 'r' , 'g' , 'b' }
+	 * */
+	public short changeColorToHssColor(Workbook wb, int _color)
+	{
+		java.awt.Color _c = new java.awt.Color(_color);
+		HSSFColor myColor =  setColor(wb, (byte) _c.getRed(), (byte) _c.getGreen(), (byte) _c.getBlue());
+			
+		return myColor.getIndex();
+	}
+	
+	public HSSFColor setColor(Workbook workbook, byte r,byte g, byte b){
+	    HSSFPalette palette = ((HSSFWorkbook) workbook).getCustomPalette();
+	    HSSFColor hssfColor = null;
+	    try {
+	        hssfColor= palette.findSimilarColor(r, g, b); 
+	        if (hssfColor == null ){
+	            palette.setColorAtIndex(HSSFColor.LAVENDER.index, r, g,b);
+	            hssfColor = palette.getColor(HSSFColor.LAVENDER.index);
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return hssfColor;
+	}
+	
+	//-------------------------------  Export Basic End -------------------------------//
+	
+	
+	
+	
+	//-------------------------------  Export Data Only  -------------------------------//
+
+	// Data Only's Workbook Styles
+	private HSSFCellStyle headerStyle;
+	private HSSFCellStyle rowStyle;
+
+	/**
+	 * <pre>
+	 * Export Data Only
+	 * 
+	 * <b>Data Set 구조</b>
+	 * { dataset_name : { 
+	 *                     "header" : [values], 
+	 *                     "data":[ [value per row],[value],[value] ]
+	 *                   }
+	 * }
+	 * 1. 데이터 셋 이름으로 Sheet 생성.
+	 * 2. Row 생성.
+	 * 3. get("header"):ArrayList&lt;String&gt;
+	 *  headerStyle을 적용한 데이터 셀 생성.
+	 * 4. get("data"):ArrayList&lt;:ArrayList&lt;String&gt;&gt; 
+	 * rowStyle Row 별 ArrayList를 기반으로 셀 생성.
+	 * </pre>
+	 * 
+	 * @param datasetMap 사용된 데이터셋의 컬럼,데이터 정보.
+	 * @throws UnsupportedEncodingException URL Decode Exception
+	 * */
+	public Workbook xmlParsingExcel(HashMap<String, HashMap<String, ArrayList<Object>>> datasetMap) throws UnsupportedEncodingException {
+
+		log.info(getClass().getName() + "::" + "Call xmlParsingDataExcel()...");
+		
+		if( datasetMap == null || datasetMap.size() == 0){
+			log.error(getClass().getName() + "::" + "datasetMap parameter is null.");
+			return null;
+		}
+		
+		wb = new HSSFWorkbook();
+		
+		createHeaderStyle();
+		createDataStyle();
+		
+		return toExcel(datasetMap);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Export Excel 페이지 별.
+	 * 1. 파라미터로 넘겨받은 Workbook 사용.
+	 * 2. sheet 도 Workbook 에서 받아와서 사용.
+	 * 
+	 * </pre>
+	 * @param dataMap 아이템별 속성정보.
+	 * @param _wb Workbook.
+	 * @param _pageNo 페이지 번호.
+	 * */
+	public Workbook xmlParsingExcel(ArrayList<ArrayList<HashMap<String, Object>>> dataMap, Workbook _wb , int _pageNo, String _formName, boolean _isNewDoc, int _documentIdx ) throws Exception {
+
+		if( dataMap == null || dataMap.size() == 0){
+			log.error(getClass().getName() + "::" + "dataMap parameter is null.");
+			return null;
+		}
+
+		itemPropList = dataMap;
+		
+		log.info(getClass().getName() + "::" + "Call partial excelSetting()...");
+		
+		isPartial = true;
+		currentPageNo = _pageNo;
+
+		wb = ( _wb == null )? new HSSFWorkbook() : _wb;
+		ZipSecureFile.setMinInflateRatio(0.00000001); 
+
+		// 50 페이지마다 새 시트 생성!
+//		if( _pageNo % 50 == 0 ){
+		if(_isNewDoc)
+		{
+			argoPageNo = _pageNo;
+		}
+
+		setXArray( documentXArrayGlobal.get(_documentIdx) );
+		
+		// --------- row 가 크면 새 시트 생성! 3000? 5000?
+//		if( _isNewDoc || _pageNo == START_PAGE || rowIdx > 2000 ){
+		if( wb.getNumberOfSheets() == 0 || mExcelSheetSplitType.equals(GlobalVariableData.UB_EXCEL_SHEET_SPLIT_PAGE) || _isNewDoc || ( _pageNo == START_PAGE && ( wb.getNumberOfSheets() == START_PAGE ) ) || ( maxSheetSize > -1 && rowIdx > maxSheetSize ) ){
+			
+			int _sheetIdx = wb.getNumberOfSheets()+1;
+//			sheet = wb.createSheet(_sheetIdx+ "_"+ _formName + (currentPageNo - argoPageNo)+"page");
+
+			String _sheetNm =  "";
+			
+			if(mExcelSheetSplitType.equals(GlobalVariableData.UB_EXCEL_SHEET_SPLIT_PAGE))
+			{
+				int _idx = wb.getNumberOfSheets();
+				_sheetNm = "";
+				
+				if( mExcelSheetNames != null && mExcelSheetNames.size() > _idx )
+				{
+					_sheetNm = mExcelSheetNames.get(_idx);
+				}
+				
+				if( _sheetNm.equals("") )
+				{
+					_sheetNm =  "Sheet" + ( _idx + 1);
+				}
+			}
+			else
+			{
+				if(mSheetName.equals(""))
+				{
+					_sheetNm =  _sheetIdx+ "_"+ _formName + (currentPageNo - argoPageNo)+"page";
+				}
+				else
+				{
+					_sheetNm = mSheetName;
+				}
+				
+			}
+			
+			int _idx = wb.getSheetIndex(_sheetNm);
+			int _addIndx = 0;
+			String _sheetTempName = _sheetNm;
+			while( _idx != -1 )
+			{
+				_addIndx = _addIndx + 1;
+				_sheetTempName = _sheetNm + "(" + _addIndx + ")";
+				_idx = wb.getSheetIndex(_sheetTempName);
+				
+				if( _idx == -1 ) _sheetNm = _sheetTempName;
+			}
+			
+			sheet = wb.createSheet(_sheetNm);
+			rowIdx=0;
+			if( _isNewDoc || _pageNo == 0 ){
+				if( itemPropList.get(0).get(0).containsKey("waterMark") ){
+					itemPropList.remove(0); // watermark 일단 제거. -- 엑셀에 워터마크 추가 시 사용.
+				}
+			}
+		}
+		else{
+			sheet = wb.getSheetAt(wb.getNumberOfSheets()-1);
+		}
+		/*
+		try {
+			sheet = wb.getSheetAt(0);
+		} catch (Exception e) {
+			sheet = wb.createSheet();
+		}
+		 */
+		if( sheet != null )
+		{
+			sheet.setPrintGridlines(false); 
+			sheet.setDisplayGridlines(false);
+		}
+		
+		return super.toExcel();
+	}
+	
+	
+	private void drawBackgroundImage( int _rowAdx,  ArrayList<Integer> _xAr, ArrayList<Integer> _yAr )
+	{
+		
+		if( this.mBackgroundImage != null && mExcelIncludeImage )
+		{
+			
+			if(mBackgroundImage.containsKey("imageID"))
+			{
+				int imgId = -1;
+				imgId = Integer.valueOf( mBackgroundImage.get("imageID").toString() );
+				/* Create the drawing container */
+				Drawing drawing = sheet.createDrawingPatriarch();
+		        /* Create an anchor point */
+				CreationHelper helper = wb.getCreationHelper();
+				ClientAnchor my_anchor = helper.createClientAnchor();
+				
+				int _rowSt = 0;
+				int _rowEd = 0;
+				int _colSt = 0;
+				int _colEd = 0;
+				
+				int _argoH = Float.valueOf(mBackgroundImage.get("argoH").toString() ).intValue();
+				int _x = Float.valueOf( mBackgroundImage.get("left").toString() ).intValue();
+				int _y = Float.valueOf( mBackgroundImage.get("top").toString() ).intValue();
+				int _w = Float.valueOf( mBackgroundImage.get("width").toString() ).intValue();
+				int _h = Float.valueOf( mBackgroundImage.get("height").toString() ).intValue();
+				
+				int _yPosition = _yAr.indexOf(_y+_argoH);
+				
+				if( _yPosition > 0 ) _yPosition = _yPosition - 1;
+				
+				_colSt = _xAr.indexOf(_x);
+				_colEd = _xAr.indexOf(_x+_w);
+				_rowSt = _yPosition + _rowAdx;
+				_rowEd = _yAr.indexOf(_y+_h+_argoH) + _rowAdx -1;
+				
+				CellRangeAddress region = new CellRangeAddress(_rowSt, _rowEd, _colSt, _colEd );
+				my_anchor.setCol1(region.getFirstColumn());
+				my_anchor.setRow1(region.getFirstRow());
+				my_anchor.setCol2(region.getLastColumn());
+				my_anchor.setRow2(region.getLastRow());
+				
+				// 아이템 사이즈 정보로 이미지 사이즈 지정. Dimension 이용. 이 경우 resize 메서드를 호출하면 안된다.
+				String itemW = String.valueOf( mBackgroundImage.get("pageWidth") );
+				String itemH = String.valueOf( mBackgroundImage.get("pageHeight") );
+				
+				double _rate = Double.valueOf(mBackgroundImage.get("widthRate").toString());
+
+				int dx = 0;
+				int dy = 0;
+				itemW = String.valueOf(_w * _rate );
+				itemH = String.valueOf(_h * _rate);	
+				dx = _x;
+				dy = _y;
+				
+				// 시작 = 0
+				my_anchor.setDx1(dx);
+				my_anchor.setDy1(dy);
+				
+				// pixel 값을 emu로 변환하기 위해 상수를 곱해준다.
+				if( !itemW.equals("null") && !itemW.equals("")){
+					my_anchor.setDx2(toNum(itemW));
+				}
+				if( !itemH.equals("null") && !itemH.equals("")){
+					my_anchor.setDy2(toNum(itemH));
+				}
+				/* Invoke createPicture and pass the anchor point and ID */
+				HSSFPicture my_picture = (HSSFPicture)  drawing.createPicture(my_anchor, imgId);
+				
+		        try
+		        {
+//		        	Call resize method, which resizes the image 
+//		        	my_picture.resize(_widthRate*_scaleW,_heightRate*_scaleH); 
+		        }
+		        catch(Exception exp)
+		        {
+		        	exp.printStackTrace();
+		        }
+		        
+			}
+			
+		}
+		
+	}
+	
+	
+	
+	/*****************************************************
+	* <pre>
+	* Export Data Only
+	* 
+	* REF :
+	* GS_UBIViewPagelib_ver2.0/src/ubstorm/view/pageprocess/ExportDocumentProcess.as > exportToDataSet()
+	* </pre>
+	* @param datasetMap
+	* @return Workbook
+	 * @throws UnsupportedEncodingException 
+	* @throws Exception 
+	*****************************************************/
+	public Workbook toExcel(HashMap<String, HashMap<String, ArrayList<Object>>> datasetMap) throws UnsupportedEncodingException {
+
+		log.info(getClass().getName() + "::" + "Start Parsing Data Excel...");
+		
+		if(wb.getNumCellStyles()<3){
+			if( wb.getCellStyleAt((short)1) == null ){
+				createHeaderStyle();
+			}
+			if( wb.getCellStyleAt((short)2) == null ){
+				createDataStyle();
+			}
+		}
+		
+		// Dataset 마다 Sheet 생성.
+		for( String dsKey : datasetMap.keySet() ){
+			Sheet s = wb.createSheet(dsKey);
+			s.setPrintGridlines(false); 
+			s.setDisplayGridlines(false);
+			
+			int rowCnt = 0;
+			HashMap<String, ArrayList<Object>> dataGroup = datasetMap.get(dsKey);
+
+			// Header Setting.
+			ArrayList<Object> headerAr = dataGroup.get("header");
+			if( headerAr != null && headerAr.size()>0 ){
+				Row row = s.createRow(rowCnt++);
+				for (int i = 0; i < headerAr.size(); i++) {
+					Cell c = row.createCell(i);
+					c.setCellStyle(wb.getCellStyleAt((short) 1));
+					s.setColumnWidth(i, PixelUtil.pixel2WidthUnits(130));
+					String itemTxt = String.valueOf(headerAr.get(i));
+					itemTxt = URLDecoder.decode(itemTxt, "UTF-8");
+					c.setCellValue(itemTxt);
+				}
+			}
+			// Data Value Setting.
+			ArrayList<Object> dataAr = dataGroup.get("data");
+			if( dataAr != null && dataAr.size()>0 ){
+				for (int i = 0; i < dataAr.size(); i++) {
+					Row row = s.createRow(rowCnt++);
+					
+					ArrayList<String> dataValueAr = (ArrayList<String>)dataAr.get(i);
+					if( dataValueAr != null && dataValueAr.size()>0 ){
+						for (int j=0; j<dataValueAr.size(); j++) {
+							String val = dataValueAr.get(j);
+							Cell c = row.createCell(j);
+							c.setCellStyle(wb.getCellStyleAt((short) 2));
+							c.setCellValue(val);
+						}// end col for
+					}
+					
+				}// end row for
+			}// row setting end
+			
+		}
+		
+		log.info(getClass().getName() + "::" + "toExcel::" + "create Data Excel Complete!");
+		
+		return wb;
+	}
+
+	private void createHeaderStyle() {
+		
+		headerStyle = (HSSFCellStyle) wb.createCellStyle();
+		headerStyle.setFillForegroundColor( IndexedColors.GREY_25_PERCENT.getIndex() );
+		headerStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
+		
+		headerStyle.setAlignment(CellStyle.ALIGN_CENTER);
+		
+		headerStyle.setBorderTop(CellStyle.BORDER_THIN);
+		headerStyle.setBorderRight(CellStyle.BORDER_THIN);
+		headerStyle.setBorderBottom(CellStyle.BORDER_THIN);
+		headerStyle.setBorderLeft(CellStyle.BORDER_THIN);
+		
+		headerStyle.setWrapText(true);
+		headerStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+		
+		Font font = wb.createFont();
+		font.setBold(true);
+		font.setFontHeightInPoints((short)11);
+		headerStyle.setFont(font);
+		
+	}
+	private void createDataStyle() {
+
+		rowStyle = (HSSFCellStyle) wb.createCellStyle();
+		
+		rowStyle.setBorderTop(CellStyle.BORDER_THIN);
+		rowStyle.setBorderRight(CellStyle.BORDER_THIN);
+		rowStyle.setBorderBottom(CellStyle.BORDER_THIN);
+		rowStyle.setBorderLeft(CellStyle.BORDER_THIN);
+		
+		rowStyle.setWrapText(true);
+		rowStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+		
+		Font font = wb.createFont();
+		font.setFontHeightInPoints((short)9);
+		rowStyle.setFont(font);
+		
+	}
+	
+	//-------------------------------Export Data Only End-------------------------------//
+
+}
+// class End
+

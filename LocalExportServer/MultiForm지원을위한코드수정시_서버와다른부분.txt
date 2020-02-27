@@ -1,0 +1,16 @@
+1. xmlToUbForm.java 826 line : getBinDivCompReportPagesRange() method에서
+  
+   가. 서버의 경우
+   		// 파라미터를 페이지별로 셋팅하기 위하여 작업
+		if( _page.hasAttribute("FORM_IDX") )
+   나. local exe의 경우
+        // 파라미터를 페이지별로 셋팅하기 위하여 작업
+		if( !mUseMultiFormType && _page.hasAttribute("FORM_IDX") )
+		
+		
+2. xmlToUbForm.java 7612 line getExportAllPages() method에서
+   가. 서버의 경우		
+		if( _page.hasAttribute("FORM_IDX") )
+   나. local exe의 경우
+    	if( !mUseMultiFormType && _page.hasAttribute("FORM_IDX") )
+    	
